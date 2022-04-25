@@ -68,3 +68,10 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 - ❌ show the README.md in the page (may create a new repo for this)
 - ❌ replace numbers for images (preventing bad tile scaling)
 - ❌ language selector (english - spanish)
+
+# update 1
+Starting again with the game was a really good idea. I just made something in 44 lines of code that took me more than 100 lines in the previous version.
+
+Right now there's nothing on screen, because nothing is done on it for now. If you open the console, you can see a text representation of the board. This will be removed once the game is playable to prevent cheating.
+
+To optimize the game, once the randomizer places a mine, the 8 surrounding non-mined spaces will add 1 to it's number, so no need to calculate every single click while playing.
