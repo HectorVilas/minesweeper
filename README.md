@@ -74,4 +74,8 @@ Starting again with the game was a really good idea. I just made something in 44
 
 Right now there's nothing on screen, because nothing is done on it for now. If you open the console, you can see a text representation of the board. This will be removed once the game is playable to prevent cheating.
 
-To optimize the game, once the randomizer places a mine, the 8 surrounding non-mined spaces will add 1 to it's number, so no need to calculate every single click while playing.
+To optimize the game, once the randomizer places a mine, the 8 surrounding non-mined spaces will add 1 to it's number (if it's on range), so no need to calculate every single click while playing.
+
+This is how it looks in the console right now:
+
+![board in console](./media/READMEmd/progress01.png)
