@@ -10,30 +10,43 @@ let board = {
         this.array[y].push(0);
       };
     };
-    console.table(this.array); //for debugging
   },
-  rand(num){
+  randIndex(num){
     return parseInt(Math.floor(Math.random()*num));
   },
   placeMines(){
+    let x, y;
     for(let i = 0; i < this.mines; i++){
-      let x, y;
       do {
-        x = this.rand(this.width);
-        y = this.rand(this.height);
+        x = this.randIndex(this.width);
+        y = this.randIndex(this.height);
       } while(this.array[y][x] == "m");
       this.array[y][x] = "m";
+      [this.validPosition([x,y-1]),
+        this.validPosition([x+1,y-1]),
+        this.validPosition([x+1,y]),
+        this.validPosition([x+1,y+1]),
+        this.validPosition([x,y+1]),
+        this.validPosition([x-1,y+1]),
+        this.validPosition([x-1,y]),
+        this.validPosition([x-1,y-1]),]
+        .forEach( t => {
+        if(t !== undefined){
+          this.array[t[1]][t[0]] += 1;
+        };
+      });
     };
-    console.table(this.array); //for debugging
   },
-  validPosition(x,y){
-    if(x >= 0 && x < this.width){
-      console.log([x,y]);
-      console.log(width);
-      return [x,y];
+  validPosition(arr){
+    if(arr[0] >= 0 && arr[0] < this.width
+      && arr[1] >= 0 && arr[1] < this.height
+      && this.array[arr[1]][arr[0]] != "m"
+      ){
+      return arr;
     };
   },
 };
 
 board.drawBoard();
 board.placeMines();
+console.table(board.array); //for debugging
