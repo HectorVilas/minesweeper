@@ -22,14 +22,10 @@ let board = {
         y = this.randIndex(this.height);
       } while(this.array[y][x] == "m");
       this.array[y][x] = "m";
-      [this.validPosition([x,y-1]),
-        this.validPosition([x+1,y-1]),
-        this.validPosition([x+1,y]),
-        this.validPosition([x+1,y+1]),
-        this.validPosition([x,y+1]),
-        this.validPosition([x-1,y+1]),
-        this.validPosition([x-1,y]),
-        this.validPosition([x-1,y-1]),]
+      [this.validPosition([x,y-1]), this.validPosition([x+1,y-1]),
+        this.validPosition([x+1,y]), this.validPosition([x+1,y+1]),
+        this.validPosition([x,y+1]), this.validPosition([x-1,y+1]),
+        this.validPosition([x-1,y]), this.validPosition([x-1,y-1])]
         .forEach( t => {
         if(t !== undefined){
           this.array[t[1]][t[0]] += 1;
