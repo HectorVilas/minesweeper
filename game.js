@@ -2,10 +2,10 @@ let gameOver = false;
 
 let board = {
   dom: document.querySelector(".board"),
-  width: 15,
-  height: 10,
-  mines: 10,
-  array: [],
+  width: 30,
+  height: 15,
+  mines: 50,
+  array: [], //[height,width]
   newGame(){
     this.arrayBoard();
     this.placeMines();
@@ -34,7 +34,7 @@ let board = {
         tile.setAttribute("y", y);
 
         tile.addEventListener("click", () => {
-          if(!gameOver){
+          if(!gameOver && !this.tileDom(x,y).className.includes("revealed")){
             this.clickAction(x,y);
           };
         });
@@ -75,20 +75,28 @@ let board = {
   revealTile(x,y){
     let thisTile = this.tileDom(x,y);
     thisTile.classList.add("revealed");
-    thisTile.innerText = this.array[y][x];
+    if(this.array[y][x] != 0){ //while there's no images
+      thisTile.innerText = this.array[y][x];
+    }; //while there's no images
   },
   revealConnected(x,y){
+    let surrounding = [];
     if(this.array[y][x] == 0){
+      surrounding = this.surroundingTiles(x,y)
+      .filter(t => this.array[t[1]][t[0]] == 0
+        && !this.tileDom(t[0],t[1]).className.includes("revealed"))
+
       this.surroundingTiles(x,y).forEach(t => {
         let thisTile = this.tileDom(t[0],t[1]);
         thisTile.classList.add("revealed");
-        thisTile.innerText = this.array[t[1]][t[0]];
+        if(this.array[t[1]][t[0]] != 0){ //while there's no images
+          thisTile.innerText = this.array[t[1]][t[0]];
+        }; //while there's no images
       });
-      // this.surroundingTiles(x,y)
-      // .filter(t => this.array[t[1]][t[0]] == 0
-        // && !this.tileDom(t[0],t[1]).className.includes("revealed"))
-      // .forEach(t => console.log(this.tileDom(t[0],t[1])));
     };
+    setTimeout(() => {
+      surrounding.forEach(t => this.revealConnected(t[0],t[1]))
+    }, 20);
   },
   tileDom(x,y){
     return document.querySelector(`[x="${x}"][y="${y}"]`);
