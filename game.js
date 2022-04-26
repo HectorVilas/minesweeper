@@ -2,9 +2,9 @@ let gameOver = false;
 
 let board = {
   dom: document.querySelector(".board"),
-  width: 20,
-  height: 15,
-  mines: 30,
+  width: 15,
+  height: 10,
+  mines: 10,
   array: [],
   newGame(){
     this.arrayBoard();
@@ -73,13 +73,26 @@ let board = {
     .filter(t => t !== undefined);
   },
   revealTile(x,y){
-    let thisTile = document.querySelector(`[x="${x}"][y="${y}"]`);
+    let thisTile = this.tileDom(x,y);
     thisTile.classList.add("revealed");
-    thisTile.innerText = board.array[y][x];
+    thisTile.innerText = this.array[y][x];
   },
   revealConnected(x,y){
-    console.log("test");///////////////
+    if(this.array[y][x] == 0){
+      this.surroundingTiles(x,y).forEach(t => {
+        let thisTile = this.tileDom(t[0],t[1]);
+        thisTile.classList.add("revealed");
+        thisTile.innerText = this.array[t[1]][t[0]];
+      });
+      // this.surroundingTiles(x,y)
+      // .filter(t => this.array[t[1]][t[0]] == 0
+        // && !this.tileDom(t[0],t[1]).className.includes("revealed"))
+      // .forEach(t => console.log(this.tileDom(t[0],t[1])));
+    };
   },
+  tileDom(x,y){
+    return document.querySelector(`[x="${x}"][y="${y}"]`);
+  }
 };
 
 board.newGame();
