@@ -79,3 +79,17 @@ To optimize the game, once the randomizer places a mine, the 8 surrounding non-m
 This is how it looks in the console right now:
 
 ![board in console](./media/READMEmd/progress01.png)
+
+# update 2
+I added the necessary code to show the board on the page, the tiles are clickables and it will show the surrounding mines or an "m" if there's a mine.
+
+I'm also trying to use some advanced array methods. Tutorials make them look intimidating, but I barely had problems with `.map()` and `filter.()`, at least for basic use. I also tried another workflow for styling. Instead of adding the same attributes to every single thing, I made a generic class to apply those from de HTML. A little example:
+
+```html
+<div class="content flex flex-h-center flex-v-center">
+```
+Right now the game can be played, but without any win or lose condition. Also no propagation of empty tiles, I think this will be the next step.
+
+I'll leave the styling for last, I want to make the game playable first.
+
+![basic board on page](./media/READMEmd/progress02.png)
