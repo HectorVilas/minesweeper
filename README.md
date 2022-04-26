@@ -13,12 +13,12 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 - ✅ write down the README file
 
 ### design:
-- ❌ height must be same as window size to prevent scrolling
-- ❌ board must scale with window
-- ❌ board must keep aspect ratio
+- ❌ ~~height must be same as window size to prevent scrolling~~
+- ❌ ~~board must scale with window~~
+- ❌ ~~board must keep aspect ratio~~
 
 ### things to display on screen:
-- ❌ the board
+- ✅ the board
 - ❌ counters
 - - ❌ remaining mines
 - - ❌ time played
@@ -35,21 +35,21 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 - - ❌ credits for any media I may use
 
 ### board generation:
-- ❌ the board must be generated
+- ✅ the board must be generated
 - - ❌ width and height defined by option settings
-- ❌ mines will be hidden in the board
+- ✅ mines will be hidden in the board
 - - ❌ quantity defined by option settings
-- - ❌ the position will be randomized
+- - ✅ the position will be randomized
 
 ### game logic:
-- ❌ when a tile is clicked
+- ✅ when a tile is clicked
 - - ❌ if there's a mine
 - - - ❌ show it and reveal the rest of the mines
 - - - ❌ the game is over
 - - - ❌ the player can't keep clicking on the board without starting again
-- - ❌ else, show the number of mines surrounding the tile
-- - - ❌ if there's no mines, nothing will be shown
-- - - ❌ the surrounding tiles will auto-reveal until there's a mine around
+- - ✅ else, show the number of mines surrounding the tile
+- - - ✅ if there's no mines, nothing will be shown
+- - - ✅ the surrounding tiles will auto-reveal until there's a mine around
 - ❌ right click must add a flag to mark a mine
 - - ❌ every flag must reduce the mine counter by one
 - - ❌ player can't put more flag than the number of mines
@@ -62,7 +62,7 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 ### other ideas:
 - ❌ a graphic minefield
 - ❌ non-rectangular board shapes
-- ❌ num type input items changes board size in real time
+- ❌ ~~num type input items changes board size in real time~~
 - ❌ sounds
 - - ❌ sound toggle button in options
 - ❌ show the README.md in the page (may create a new repo for this)
