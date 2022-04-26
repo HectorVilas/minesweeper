@@ -1,3 +1,5 @@
+let gameOver = false;
+
 let board = {
   dom: document.querySelector(".board"),
   width: 20,
@@ -9,6 +11,10 @@ let board = {
     this.placeMines();
     this.drawBoard();
   },
+  clickAction(x,y){
+    this.revealTile(x,y);
+    this.revealConnected(x,y);
+  },
   arrayBoard(){
     for(let y = 0; y < this.height; y++){
       this.array.push([]);
@@ -18,14 +24,21 @@ let board = {
     };
   },
   drawBoard(){
-    for (let i = 0; i < this.height; i++) {
+    for (let y = 0; y < this.height; y++) {
       let row = document.createElement("div");
       row.className = "row";
-      for (let j = 0; j < this.width; j++) {
+      for (let x = 0; x < this.width; x++) {
         let tile = document.createElement("div");
         tile.className = "tile";
-        tile.setAttribute("x", j);
-        tile.setAttribute("y", i);
+        tile.setAttribute("x", x);
+        tile.setAttribute("y", y);
+
+        tile.addEventListener("click", () => {
+          if(!gameOver){
+            this.clickAction(x,y);
+          };
+        });
+
         row.append(tile);
       };
       this.dom.appendChild(row);
@@ -42,15 +55,7 @@ let board = {
         y = this.randIndex(this.height);
       } while(this.array[y][x] == "m");
       this.array[y][x] = "m";
-      [this.validPosition([x,y-1]), this.validPosition([x+1,y-1]),
-        this.validPosition([x+1,y]), this.validPosition([x+1,y+1]),
-        this.validPosition([x,y+1]), this.validPosition([x-1,y+1]),
-        this.validPosition([x-1,y]), this.validPosition([x-1,y-1])]
-        .forEach( t => {
-        if(t !== undefined){
-          this.array[t[1]][t[0]] += 1;
-        };
-      });
+      this.surroundingTiles(x,y).forEach( t => this.array[t[1]][t[0]] += 1);
     };
   },
   validPosition(arr){
@@ -60,7 +65,22 @@ let board = {
       return arr;
     };
   },
+  surroundingTiles(x,y){
+    return [this.validPosition([x,y-1]), this.validPosition([x+1,y-1]),
+    this.validPosition([x+1,y]), this.validPosition([x+1,y+1]),
+    this.validPosition([x,y+1]), this.validPosition([x-1,y+1]),
+    this.validPosition([x-1,y]), this.validPosition([x-1,y-1])]
+    .filter(t => t !== undefined);
+  },
+  revealTile(x,y){
+    let thisTile = document.querySelector(`[x="${x}"][y="${y}"]`);
+    thisTile.classList.add("revealed");
+    thisTile.innerText = board.array[y][x];
+  },
+  revealConnected(x,y){
+    console.log("test");///////////////
+  },
 };
 
 board.newGame();
-console.table(board.array); //for debugging
+// console.table(board.array); //for debugging
