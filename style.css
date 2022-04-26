@@ -46,9 +46,9 @@ body {
 .board {
   border: 1px solid gray;
   flex-direction: column;
-  aspect-ratio: 1/1;
-  width: 600px;
-  height: 450px;
+  /* aspect-ratio: 1/1; */
+  width: 90vw;
+  height: 90vh;
 }
 .row {
   display: flex;
@@ -62,12 +62,14 @@ body {
   text-align: center;
   vertical-align: middle;
   font-weight: 800;
+  font-size: 1vw;
 }.tile:hover {
   background-color: #eee;
 }.tile:active {
   background-color: #ccc;
   border-style: inset;
 }.tile.revealed {
+  transition: 250ms;
   background-color: #ccc;
   border: 4px solid #bbb;
 }
