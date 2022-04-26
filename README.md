@@ -93,3 +93,13 @@ Right now the game can be played, but without any win or lose condition. Also no
 I'll leave the styling for last, I want to make the game playable first.
 
 ![basic board on page](./media/READMEmd/progress02.png)
+
+# update 3
+The tile revealing propagation is finally implemented. I used a recursion to make it, it takes a toll in the CPU usage, may replace in the future.
+
+To make it a little more interesting, the propagation have a timeout so the player can see it in action. Also the "revealed" state have a little transition in the `CSS` to make it more pleasant to look at.
+
+It will be removed when graphics are applied to the tiles, so here's two gifs:
+
+![gif](./media/READMEmd/progress03.gif)
+![gif](./media/READMEmd/progress04.gif)
