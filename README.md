@@ -103,3 +103,14 @@ It will be removed when graphics are applied to the tiles, so here's two gifs:
 
 ![gif](./media/READMEmd/progress03.gif)
 ![gif](./media/READMEmd/progress04.gif)
+
+# update 4
+The numbers are now images instead of text (had a little fun with InkScape). The code just needed a little adaptation to replace the numbers for It's image version. I may need to move a few thing to a new function to make it easier to put images in the tiles and also the mines and flags (and maybe an interrogation char in case the player suspect of a tile but is not sure).
+
+As the images are PNG's with transparent backgrounds, the revealing effect has been conserved and won't need extra code for it.
+
+![gif](./media/READMEmd/progress05.gif)
+
+Anyways, the game is not playable for now, unless the player want to guess if there's a mine in a revealed empty tile or just no mines around.
+
+The next step would be to draw a mine to show in the board, but so many years has passed since I drawed something in vectors. May take me a while to draw a decent mine. I just don't want to download it, may need some drawing skills in the future. Once I have the drawing, I just need to adapt the code.
