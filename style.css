@@ -84,16 +84,35 @@ body {
   scale: 200%;
 }.boom2 {
   transition: ease-in-out 400ms;
-  scale: 50%;
+  scale: 40%;
 }.boom3 {
   transition: ease-in-out 600ms;
-  scale: 120%;
+  scale: 150%;
 }.boom4 {
   transition: ease-in-out 800ms;
   scale: 80%;
 }.boom5 {
   transition: ease-in-out 1500ms;
   scale: 100%;
+}
+.z9 {
+  z-index: 9;
+}.z8 {
+  z-index: 8;
+}.z7 {
+  z-index: 7;
+}.z6 {
+  z-index: 6;
+}.z5 {
+  z-index: 5;
+}.z4 {
+  z-index: 4;
+}.z3 {
+  z-index: 3;
+}.z2 {
+  z-index: 2;
+}.z1 {
+  z-index: 1;
 }
 
 /*for testing*/
