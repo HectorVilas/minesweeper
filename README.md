@@ -125,3 +125,11 @@ The code has also been shortened a bit by moving stuff to a new function, which 
 If the image is too small on the board, there it is:
 
 ![Mine](./media/images/mine.png)
+
+# update 6
+
+Today I wasted time on this little animation, heh. If your selected tile have a mine, a "shockwave" animation will be applied to it and some of it's surrounding tiles. A few seconds later, the remaining mines in the board will be revealed.
+
+The good thing, this have no great effect in the CPU usage. The bad thing, it's not consistent, I don't know why. Still looks good, I think.
+
+![gif](./media/READMEmd/progress06.gif)
