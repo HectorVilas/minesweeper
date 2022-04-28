@@ -114,3 +114,14 @@ As the images are PNG's with transparent backgrounds, the revealing effect has b
 Anyways, the game is not playable for now, unless the player want to guess if there's a mine in a revealed empty tile or just no mines around.
 
 The next step would be to draw a mine to show in the board, but so many years has passed since I drawed something in vectors. May take me a while to draw a decent mine. I just don't want to download it, may need some drawing skills in the future. Once I have the drawing, I just need to adapt the code.
+
+# update 5
+After spending some time with Blender 3D, Gimp and finally InkScape, I modeled and then traced a mine to use as image. Those files used are in the "Resources" folder.
+
+> I've spent a few years in the past messing on Blender 3D and I know enough of Gimp to get the outline of an image so everything was fine until this point, but InkScape was kind of disappointing. I remember drawing lines and curves on Macromedia Flash 5 like 20 years ago, it was so easy and intuitive, and I was especting the same for this other modern software. My first plan was to trace the mine manually, with straight lines and curves, but ended converting the image into a vectorial one. Maybe I should keep looking for other applications for vectorial images.
+
+The code has also been shortened a bit by moving stuff to a new function, which I also used to draw the mine in case there's one on the tile.
+
+If the image is too small on the board, there it is:
+
+![Mine](./media/images/mine.png)
