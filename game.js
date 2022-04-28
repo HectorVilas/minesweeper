@@ -2,8 +2,8 @@ let gameOver = false;
 
 let board = {
   dom: document.querySelector(".board"),
-  width: 20,
-  height: 10,
+  width: 30,
+  height: 15,
   mines: 30,
   array: [], //each array inside: [height,width]
   newGame(){
