@@ -79,6 +79,23 @@ body {
   width: 100%;
 }
 
+.boom1 {
+  transition: ease-in-out 300ms;
+  scale: 200%;
+}.boom2 {
+  transition: ease-in-out 400ms;
+  scale: 50%;
+}.boom3 {
+  transition: ease-in-out 600ms;
+  scale: 120%;
+}.boom4 {
+  transition: ease-in-out 800ms;
+  scale: 80%;
+}.boom5 {
+  transition: ease-in-out 1500ms;
+  scale: 100%;
+}
+
 /*for testing*/
 ** {
   box-shadow: inset 0 0 1px black;

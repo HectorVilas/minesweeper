@@ -128,7 +128,22 @@ let board = {
       this.revealTile(pos[0],pos[1]);
     });
   },
+  tileExploding(x,y){
+    let boom = this.tileDom(x,y);
+    boom.classList.add("boom1");
+    setTimeout(() => { boom.classList.add("boom2");
+      setTimeout(() => { boom.classList.add("boom3");
+        setTimeout(() => { boom.classList.add("boom4");
+          setTimeout(() => { boom.classList.add("boom5");
+            setTimeout(() => { boom.classList.remove("boom1",
+            "boom2","boom3","boom4","boom5")
+            }, 1500);
+          }, 800);
+        }, 600);
+      }, 400);
+    }, 300);
+  },
 };
 
 board.newGame();
-console.table(board.array); //for debugging
+// console.table(board.array); //for debugging
