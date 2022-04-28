@@ -78,7 +78,7 @@ let board = {
     if(this.array[y][x] != 0
       && typeof(this.array[y][x]) == "number"){
       thisTile.innerHTML = "";
-      thisTile.appendChild(this.tileNum(this.array[y][x]));
+      thisTile.appendChild(this.images(this.array[y][x]));
     };
   },
   revealConnected(x,y){
@@ -94,7 +94,7 @@ let board = {
         if(this.array[t[1]][t[0]] != 0
           && typeof(this.array[t[1]][t[0]]) == "number"){
           thisTile.innerHTML = "";
-          thisTile.appendChild(this.tileNum(this.array[t[1]][t[0]]));
+          thisTile.appendChild(this.images(this.array[t[1]][t[0]]));
         };
       });
     };
@@ -105,17 +105,17 @@ let board = {
   tileDom(x,y){
     return document.querySelector(`[x="${x}"][y="${y}"]`);
   },
-  tileNum(n){
+  images(n){
     let numDom = document.createElement("img");
     numDom.classList.add("tile-image");
-    let images = ["./media/numbers/n1.png","./media/numbers/n2.png",
-      "./media/numbers/n3.png","./media/numbers/n4.png",
-      "./media/numbers/n5.png","./media/numbers/n6.png",
-      "./media/numbers/n7.png","./media/numbers/n8.png"];
+    let images = ["./media/images/n1.png","./media/images/n2.png",
+      "./media/images/n3.png","./media/images/n4.png",
+      "./media/images/n5.png","./media/images/n6.png",
+      "./media/images/n7.png","./media/images/n8.png"];
     numDom.setAttribute("src", images[n-1]);
     return numDom;
   },
 };
 
 board.newGame();
-console.table(board.array); //for debugging
+// console.table(board.array); //for debugging
