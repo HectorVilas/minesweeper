@@ -14,6 +14,7 @@ let board = {
   clickAction(x,y){
     this.revealTile(x,y);
     this.revealConnected(x,y);
+    this.winLoseCondition(x,y);
   },
   arrayBoard(){
     for(let y = 0; y < this.height; y++){
@@ -125,6 +126,15 @@ let board = {
       this.revealTile(pos[0],pos[1]);
     });
   },
+  winLoseCondition(x,y){
+    if(this.array[y][x] == "m"){
+      gameOver = true;
+      animations.shockwave(x,y);
+      setTimeout(() => {
+        this.revealMines()
+      }, 4000);
+    }
+  }
 };
 
 let animations = {
