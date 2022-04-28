@@ -2,9 +2,9 @@ let gameOver = false;
 
 let board = {
   dom: document.querySelector(".board"),
-  width: 30,
-  height: 15,
-  mines: 50,
+  width: 20,
+  height: 10,
+  mines: 30,
   array: [], //each array inside: [height,width]
   newGame(){
     this.arrayBoard();
@@ -115,7 +115,20 @@ let board = {
       tile.appendChild(image);
     };
   },
+  revealMines(){
+    let positions = [];
+    for (let y = 0; y < this.height; y++) {
+      for (let x = 0; x < this.width; x++) {
+        if(this.array[y][x] == "m"){
+          positions.push([x,y]);
+        }
+      }
+    }
+    positions.forEach(pos => {
+      this.revealTile(pos[0],pos[1]);
+    });
+  },
 };
 
 board.newGame();
-// console.table(board.array); //for debugging
+console.table(board.array); //for debugging
