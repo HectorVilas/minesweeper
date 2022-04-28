@@ -75,11 +75,7 @@ let board = {
   revealTile(x,y){
     let thisTile = this.tileDom(x,y);
     thisTile.classList.add("revealed");
-    if(this.array[y][x] != 0
-      && typeof(this.array[y][x]) == "number"){
-      thisTile.innerHTML = "";
-      thisTile.appendChild(this.images(this.array[y][x]));
-    };
+    this.imageDom(thisTile,this.array[y][x]);
   },
   revealConnected(x,y){
     let surrounding = [];
@@ -91,11 +87,7 @@ let board = {
       this.surroundingTiles(x,y).forEach(t => {
         let thisTile = this.tileDom(t[0],t[1]);
         thisTile.classList.add("revealed");
-        if(this.array[t[1]][t[0]] != 0
-          && typeof(this.array[t[1]][t[0]]) == "number"){
-          thisTile.innerHTML = "";
-          thisTile.appendChild(this.images(this.array[t[1]][t[0]]));
-        };
+        this.imageDom(thisTile, this.array[t[1]][t[0]]);
       });
     };
     setTimeout(() => {
@@ -105,15 +97,23 @@ let board = {
   tileDom(x,y){
     return document.querySelector(`[x="${x}"][y="${y}"]`);
   },
-  images(n){
-    let numDom = document.createElement("img");
-    numDom.classList.add("tile-image");
-    let images = ["./media/images/n1.png","./media/images/n2.png",
-      "./media/images/n3.png","./media/images/n4.png",
-      "./media/images/n5.png","./media/images/n6.png",
-      "./media/images/n7.png","./media/images/n8.png"];
-    numDom.setAttribute("src", images[n-1]);
-    return numDom;
+  imageDom(tile, value){
+    tile.innerHTML = "";
+    let image = document.createElement("img");
+    image.classList.add("tile-image");
+    if(typeof(value) == "number" && value !== 0){
+      let images = ["./media/images/n1.png","./media/images/n2.png",
+        "./media/images/n3.png","./media/images/n4.png",
+        "./media/images/n5.png","./media/images/n6.png",
+        "./media/images/n7.png","./media/images/n8.png"];
+      image.setAttribute("src", images[value-1]);
+      tile.appendChild(image);
+      return image;
+    } else if(value == "m"){
+      image.setAttribute("src", "./media/images/mine.png");
+      tile.classList.add("mine");
+      tile.appendChild(image);
+    };
   },
 };
 
