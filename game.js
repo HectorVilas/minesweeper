@@ -103,11 +103,7 @@ let board = {
     let image = document.createElement("img");
     image.classList.add("tile-image");
     if(typeof(value) == "number" && value !== 0){
-      let images = ["./media/images/n1.png","./media/images/n2.png",
-        "./media/images/n3.png","./media/images/n4.png",
-        "./media/images/n5.png","./media/images/n6.png",
-        "./media/images/n7.png","./media/images/n8.png"];
-      image.setAttribute("src", images[value-1]);
+      image.setAttribute("src", `./media/images/n${value}.png`);
       tile.appendChild(image);
       return image;
     } else if(value == "m"){
