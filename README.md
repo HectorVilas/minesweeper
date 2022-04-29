@@ -133,3 +133,9 @@ Today I wasted time on this little animation, heh. If your selected tile have a 
 The good thing, this have no great effect in the CPU usage. The bad thing, it's not consistent, I don't know why. Still looks good, I think.
 
 ![gif](./media/READMEmd/progress06.gif)
+
+# update 7
+
+I've been busy today, so I didn't do much with the game, but at least now the animation is consistent. I didn't know about `"transitionend"` for listeners, I found about it watching again a video I saw one or two months ago. I just nested listeners, so once the tile ends it's transition (growing), then it changes to the next one (shrinking) and so on. There's a little bug with the first mine animation, will try to fix for the next update.
+
+![gif](./media/READMEmd/progress07.gif)
