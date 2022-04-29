@@ -71,8 +71,8 @@ body {
   background-color: #ccc;
   border: 4px solid #bbb;
 }.revealed.mine {
-  background-color: darkred;
-  border-color: darkred;
+  background-color: darkred !important;
+  border-color: darkred !important;
 }
 
 /*preventing animation inconsistency*/
