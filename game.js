@@ -5,7 +5,7 @@ let board = {
   width: 30,
   height: 15,
   mines: 30,
-  array: [], //each array inside: [height,width]
+  array: [], //each array inside: [Y position, X position]
   newGame(){
     this.arrayBoard();
     this.placeMines();
@@ -17,6 +17,7 @@ let board = {
     this.winLoseCondition(x,y);
   },
   arrayBoard(){
+    this.array = []; //cleaning before starting another game
     for(let y = 0; y < this.height; y++){
       this.array.push([]);
       for(let x = 0; x < this.width; x++){
@@ -25,6 +26,7 @@ let board = {
     };
   },
   drawBoard(){
+    this.dom.innerHTML = "";
     for (let y = 0; y < this.height; y++) {
       let row = document.createElement("div");
       row.className = "row";
@@ -140,18 +142,27 @@ let board = {
 let animations = {
   tileExploding(x,y){
     let boom = board.tileDom(x,y);
+
     boom.classList.add("boom1");
-    setTimeout(() => { boom.classList.add("boom2");
-      setTimeout(() => { boom.classList.add("boom3");
-        setTimeout(() => { boom.classList.add("boom4");
-          setTimeout(() => { boom.classList.add("boom5");
-            setTimeout(() => { boom.classList.remove("boom1",
-            "boom2","boom3","boom4","boom5")
-            }, 1500);
-          }, 800);
-        }, 600);
-      }, 400);
-    }, 300);
+    boom.addEventListener("transitionend", () => {
+        boom.classList.remove("boom1");
+        boom.classList.add("boom2");
+        boom.addEventListener("transitionend", () => {
+          boom.classList.remove("boom2");
+          boom.classList.add("boom3");
+          boom.addEventListener("transitionend", () => {
+            boom.classList.remove("boom3");
+            boom.classList.add("boom4");
+            boom.addEventListener("transitionend", () => {
+              boom.classList.remove("boom4");
+              boom.classList.add("boom5");
+              boom.addEventListener("transitionend", () => {
+                boom.classList.remove("boom5");
+              });
+            });
+          });
+        });
+    });
   },
   valids(...arr){
     let inRange = [];
@@ -166,33 +177,25 @@ let animations = {
     this.tileExploding(x,y);
     board.tileDom(x,y).classList.add("z9");
     setTimeout(() => {
-      this.valids([x-1,y-1],[x,y-1],[x+1,y-1],[x-1,y],[x+1,y],[x+1,y+1],
-        [x,y+1],[x-1,y+1]).forEach(t =>{
+      this.valids([x-1,y-1],[x,y-1],[x+1,y-1],[x-1,y],[x+1,y],[x+1,y+1],[x,y+1],[x-1,y+1]).forEach(t =>{
         this.tileExploding(t[0],t[1]);
         board.tileDom(t[0],t[1]).classList.add("z8");
-    }, 100);
+      }, 100);
     });
     setTimeout(() => {
-      this.valids([x-1,y-2],[x,y-2],[x+1,y-2],[x-2,y-1],[x+2,y-1],[x-2,y],
-        [x+2,y],[x-2,y+1],[x+2,y+1],[x-1,y+2],[x,y+2],[x+1,y+2]).forEach(t =>{
-          this.tileExploding(t[0],t[1]);
-          board.tileDom(t[0],t[1]).classList.add("z7");
-        });
+      this.valids([x-1,y-2],[x,y-2],[x+1,y-2],[x-2,y-1],[x+2,y-1],[x-2,y],[x+2,y],[x-2,y+1],[x+2,y+1],[x-1,y+2],[x,y+2],[x+1,y+2]).forEach(t =>{
+        this.tileExploding(t[0],t[1]);
+        board.tileDom(t[0],t[1]).classList.add("z7");
+      });
     }, 200);
     setTimeout(() => {
-      this.valids([x-1,y-3],[x,y-3],[x+1,y-3],[x-2,y-2],[x+2,y-2],[x-3,y-1],
-        [x+3,y-1],[x-3,y],[x+3,y],[x-3,y+1],[x+3,y+1],[x-2,y+2],[x+2,y+2],
-        [x-1,y+3],[x,y+3],[x+1,y+3]).forEach(t =>{
+      this.valids([x-1,y-3],[x,y-3],[x+1,y-3],[x-2,y-2],[x+2,y-2],[x-3,y-1],[x+3,y-1],[x-3,y],[x+3,y],[x-3,y+1],[x+3,y+1],[x-2,y+2],[x+2,y+2],[x-1,y+3],[x,y+3],[x+1,y+3]).forEach(t =>{
         this.tileExploding(t[0],t[1]);
         board.tileDom(t[0],t[1]).classList.add("z6");
       });
     }, 300);
     setTimeout(() => {
-      this.valids([x-2,y-4],[x-1,y-4],[x,y-4],[x+1,y-4],[x+2,y-4],[x-3,y-3],
-        [x-2,y-3],[x+2,y-3],[x+3,y-3],[x-4,y-2],[x-3,y-2],[x+3,y-2],[x+4,y-2],
-        [x-4,y-1],[x+4,y-1],[x-4,y],[x+4,y],[x-4,y+1],[x+4,y+1],[x-4,y+2],
-        [x-3,y+2],[x+3,y+2],[x+4,y+2],[x-3,y+3],[x-2,y+3],[x+2,y+3],[x+3,y+3],
-        [x-2,y+4],[x-1,y+4],[x,y+4],[x+1,y+4],[x+2,y+4]).forEach(t =>{
+      this.valids([x-2,y-4],[x-1,y-4],[x,y-4],[x+1,y-4],[x+2,y-4],[x-3,y-3],[x-2,y-3],[x+2,y-3],[x+3,y-3],[x-4,y-2],[x-3,y-2],[x+3,y-2],[x+4,y-2],[x-4,y-1],[x+4,y-1],[x-4,y],[x+4,y],[x-4,y+1],[x+4,y+1],[x-4,y+2],[x-3,y+2],[x+3,y+2],[x+4,y+2],[x-3,y+3],[x-2,y+3],[x+2,y+3],[x+3,y+3],[x-2,y+4],[x-1,y+4],[x,y+4],[x+1,y+4],[x+2,y+4]).forEach(t =>{
         this.tileExploding(t[0],t[1]);
         board.tileDom(t[0],t[1]).classList.add("z5");
       });
