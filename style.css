@@ -75,6 +75,12 @@ body {
   border-color: darkred;
 }
 
+/*preventing animation inconsistency*/
+.tile.revealed-no-transition { 
+  background-color: #ccc;
+  border: 4px solid #bbb;
+}
+
 .tile-image {
   width: 100%;
 }

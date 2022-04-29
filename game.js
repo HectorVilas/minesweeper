@@ -174,6 +174,13 @@ let animations = {
     return inRange;
   },
   shockwave(x,y){
+    document.querySelectorAll(".revealed").forEach(t => {
+      if(t.className.includes("revealed")){
+        t.classList.remove("revealed");
+        t.classList.add("revealed-no-transition");
+      }
+    });
+
     this.tileExploding(x,y);
     board.tileDom(x,y).classList.add("z9");
     setTimeout(() => {
