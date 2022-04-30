@@ -175,7 +175,7 @@ let animations = {
   },
   shockwave(x,y){
     document.querySelectorAll(".revealed").forEach(t => {
-      if(t.className.includes("revealed")){
+      if(t.className.includes("revealed") && board.array[y][x] != "m"){
         t.classList.remove("revealed");
         t.classList.add("revealed-no-transition");
       }

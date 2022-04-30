@@ -70,16 +70,8 @@ body {
   transition: 250ms;
   background-color: #ccc;
   border: 4px solid #bbb;
-}.revealed.mine {
-  background-color: darkred !important;
-  border-color: darkred !important;
 }
 
-/*preventing animation inconsistency*/
-.tile.revealed-no-transition { 
-  background-color: #ccc;
-  border: 4px solid #bbb;
-}
 
 .tile-image {
   width: 100%;
@@ -119,6 +111,15 @@ body {
   z-index: 2;
 }.z1 {
   z-index: 1;
+}
+
+/*preventing animation inconsistency*/
+.tile.revealed-no-transition { 
+  background-color: #ccc;
+  border: 4px solid #bbb;
+}.revealed.mine {
+  background-color: darkred;
+  border-color: darkred;
 }
 
 /*for testing*/
