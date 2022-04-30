@@ -144,24 +144,26 @@ let animations = {
     let boom = board.tileDom(x,y);
 
     boom.classList.add("boom1");
-    boom.addEventListener("transitionend", () => {
+    boom.addEventListener("transitionend", (e) => {
+      if(e.propertyName == "scale") {
         boom.classList.remove("boom1");
         boom.classList.add("boom2");
-        boom.addEventListener("transitionend", () => {
+        boom.addEventListener("transitionend", (e) => {
           boom.classList.remove("boom2");
           boom.classList.add("boom3");
-          boom.addEventListener("transitionend", () => {
+          boom.addEventListener("transitionend", (e) => {
             boom.classList.remove("boom3");
             boom.classList.add("boom4");
-            boom.addEventListener("transitionend", () => {
+            boom.addEventListener("transitionend", (e) => {
               boom.classList.remove("boom4");
               boom.classList.add("boom5");
-              boom.addEventListener("transitionend", () => {
+              boom.addEventListener("transitionend", (e) => {
                 boom.classList.remove("boom5");
               });
             });
           });
         });
+      };
     });
   },
   valids(...arr){
@@ -175,10 +177,10 @@ let animations = {
   },
   shockwave(x,y){
     document.querySelectorAll(".revealed").forEach(t => {
-      if(t.className.includes("revealed") && board.array[y][x] != "m"){
+      if(t.className.includes("revealed")){
         t.classList.remove("revealed");
         t.classList.add("revealed-no-transition");
-      }
+      };
     });
 
     this.tileExploding(x,y);
