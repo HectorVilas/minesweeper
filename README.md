@@ -12,11 +12,6 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 
 - ✅ write down the README file
 
-### design:
-- ❌ ~~height must be same as window size to prevent scrolling~~
-- ❌ ~~board must scale with window~~
-- ❌ ~~board must keep aspect ratio~~
-
 ### things to display on screen:
 - ✅ the board
 - ❌ counters
@@ -43,10 +38,10 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 
 ### game logic:
 - ✅ when a tile is clicked
-- - ❌ if there's a mine
-- - - ❌ show it and reveal the rest of the mines
-- - - ❌ the game is over
-- - - ❌ the player can't keep clicking on the board without starting again
+- - ✅ if there's a mine
+- - - ✅ show it and reveal the rest of the mines
+- - - ✅ the game is over
+- - - ✅ the player can't keep clicking on the board without starting again
 - - ✅ else, show the number of mines surrounding the tile
 - - - ✅ if there's no mines, nothing will be shown
 - - - ✅ the surrounding tiles will auto-reveal until there's a mine around
@@ -62,12 +57,15 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 ### other ideas:
 - ❌ a graphic minefield
 - ❌ non-rectangular board shapes
-- ❌ ~~num type input items changes board size in real time~~
 - ❌ sounds
 - - ❌ sound toggle button in options
 - ❌ show the README.md in the page (may create a new repo for this)
-- ❌ replace numbers for images (preventing bad tile scaling)
+- ✅ replace numbers for images (preventing bad tile scaling)
 - ❌ language selector (english - spanish)
+
+### animations:
+- ✅ shockwave effect after revealing a mine
+- ❌ animation for board drawing 
 
 # update 1
 Starting again with the game was a really good idea. I just made something in 44 lines of code that took me more than 100 lines in the previous version.
@@ -139,3 +137,5 @@ The good thing, this have no great effect in the CPU usage. The bad thing, it's 
 I've been busy today, so I didn't do much with the game, but at least now the animation is consistent. I didn't know about `"transitionend"` for listeners, I found about it watching again a video I saw one or two months ago. I just nested listeners, so once the tile ends it's transition (growing), then it changes to the next one (shrinking) and so on. There's a little bug with the first mine animation, will try to fix for the next update.
 
 ![gif](./media/READMEmd/progress07.gif)
+
+**note:** solved the mine no animating adding an extra condition to the `if`.
