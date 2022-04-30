@@ -138,4 +138,8 @@ I've been busy today, so I didn't do much with the game, but at least now the an
 
 ![gif](./media/READMEmd/progress07.gif)
 
-**note:** solved the mine no animating adding an extra condition to the `if`.
+# update 8
+
+solved the first mine no animating. My first solution was partial, the mine would get only two scale changes and stop. Found the real problem: the listeners for `"transitionend"` were listening for any transition, so I limited it to just scale. Now the mine gets animated as the rest of the tiles. If you see the previous gif, you can notice the difference.
+
+![gif](./media/READMEmd/progress08.gif)
