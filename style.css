@@ -64,6 +64,7 @@ p {
 .board {
   flex-direction: column;
   width: 95vw;
+  max-width: 1500px; /*temporal solution*/
   background-color: darkred;
 }
 .row {
