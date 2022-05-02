@@ -148,6 +148,7 @@ let board = {
       }, 4000);
     } else if(this.remaining <= 0){
       alert("player wins\nthis is a temporal message");
+      gameOver = true;
     };
   },
 };
