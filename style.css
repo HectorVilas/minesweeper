@@ -8,20 +8,31 @@
   --text-color-3: #505050;
 }
 
-html {
-  margin: 0;
-}
-
 body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   margin: 0;
   background-color: var(--color-page-1);
   font-family: 'Times New Roman', Times, serif;
 }
 
-/*general*/
+p {
+  margin: 0;
+}
+
+
+
+/* - - - general - - - */
 
 .flex {
   display: flex;
+}.flex-item-auto {
+  flex: 1 1 auto;
+}.flex-item-no-basis {
+  flex: 1 1 0;
+}.flex-item-no-grow {
+  flex: 0 0 auto;
 }
 
 .flex-h-center {
@@ -30,6 +41,8 @@ body {
   justify-content: flex-start;
 }.flex-h-end {
   justify-content: flex-end;
+}.flex-justify-between {
+  justify-content: space-between;
 }
 .flex-v-center {
   align-items: center;
@@ -39,16 +52,19 @@ body {
   align-items: flex-end;
 }
 
-/*specifics*/
-.content {
-  height: 100vh;
-}
-.board {
-  border: 1px solid gray;
+.flex-row {
+  flex-direction: row;
+}.flex-column {
   flex-direction: column;
-  /* aspect-ratio: 1/1; */
-  width: 90vw;
-  /* height: 90vh; */
+}
+
+
+
+/* - - - game related - - - */
+.board {
+  flex-direction: column;
+  width: 95vw;
+  background-color: darkred;
 }
 .row {
   display: flex;
@@ -71,7 +87,6 @@ body {
   background-color: #ccc;
   border: 4px solid #bbb;
 }
-
 
 .tile-image {
   width: 100%;
@@ -121,6 +136,31 @@ body {
   background-color: darkred;
   border-color: darkred;
 }
+
+
+
+/* - - - specifics - - - */
+
+/*interface*/
+
+header {
+  background-color: var(--color-page-2);
+  padding: 5px;
+  border: 5px ridge var(--color-page-2);
+}
+
+.play-area {
+  background-color: #ddd;
+  border: 5px ridge white;
+  box-shadow: 0 5px 20px #312c55;
+}
+
+.top-board {
+  border-bottom: 4px ridge white;
+  padding: 2px 7px;
+}
+
+
 
 /*for testing*/
 ** {

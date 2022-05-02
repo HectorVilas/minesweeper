@@ -10,8 +10,20 @@
   <script src="./game.js" defer></script>
 </head>
 <body>
-  <div class="content flex flex-h-center flex-v-center">
-    <div class="board flex"></div>
+  <header class="flex flex-justify-between">
+    <p>Minesweeper</p>
+    <button>[=]</button>
+  </header>
+  <div class="content flex flex-h-center flex-v-center flex-column flex-item-auto">
+    <div class="play-area flex flex-column">
+      <div class="top-board flex">
+        <div class="mines flex flex-item-no-basis flex-h-start flex-v-center"><p><span>0</span> mines</p></div>
+        <div class="face flex flex-item-no-basis flex-h-center"><button>:|</button></div>
+        <div class="time flex flex-item-no-basis flex-h-end flex-v-center"><p>Time: <span>000</span></p></div>
+      </div>
+      <div class="board flex"></div>
+    </div>
   </div>
+  <!-- <footer>footer</footer> -->
 </body>
 </html>
