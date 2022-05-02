@@ -5,8 +5,10 @@ let board = {
   width: 30,
   height: 15,
   mines: 30,
+  remaining: undefined,
   array: [], //each array inside: [Y position, X position]
   newGame(){
+    this.remaining = this.width*this.height-this.mines;
     this.arrayBoard();
     this.placeMines();
     this.drawBoard();
@@ -78,8 +80,14 @@ let board = {
   },
   revealTile(x,y){
     let thisTile = this.tileDom(x,y);
+    thisArr = this.array[y][x];
     thisTile.classList.add("revealed");
-    this.imageDom(thisTile,this.array[y][x]);
+    this.imageDom(thisTile,thisArr);
+    //////////////////
+    if(thisArr != "m"){
+      this.remaining--;
+    }
+    //////////////////
   },
   revealConnected(x,y){
     let surrounding = [];
@@ -90,8 +98,11 @@ let board = {
 
       this.surroundingTiles(x,y).forEach(t => {
         let thisTile = this.tileDom(t[0],t[1]);
-        thisTile.classList.add("revealed");
-        this.imageDom(thisTile, this.array[t[1]][t[0]]);
+        if(!thisTile.className.includes("revealed")){
+          thisTile.classList.add("revealed");
+          this.imageDom(thisTile, this.array[t[1]][t[0]]);
+          this.remaining--;
+        };
       });
     };
     setTimeout(() => {
@@ -133,10 +144,12 @@ let board = {
       gameOver = true;
       animations.shockwave(x,y);
       setTimeout(() => {
-        this.revealMines()
+        this.revealMines();
       }, 4000);
-    }
-  }
+    } else if(this.remaining <= 0){
+      alert("player wins\nthis is a temporal message");
+    };
+  },
 };
 
 let animations = {
@@ -214,3 +227,4 @@ let animations = {
 
 board.newGame();
 // console.table(board.array); //for debugging
+board.revealMines()  //for debugging
