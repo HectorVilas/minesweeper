@@ -54,6 +54,20 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 - - ❌ remaining flags will be placed over the mines
 - - ❌ the timer must stop
 
+### visual elements:
+#### animations:
+- ✅ shockwave effect after revealing a mine
+- - ❌ expand the shockwave to the rest of the board
+- ❌ animation for board drawing 
+#### interface
+- ❌ prompt made of divs with absolute position to show in the middle of the screen, over the board itself
+- - ❌ if player wins/loses must include "play again" and close buttons
+- ❌ "burger" button to show menu on the right of the screen
+- - ❌ sliders for board width/height and number of mines
+- - ❌ folded "how to play" div with instructions
+- - - ❌ include gifs showing how to play
+- - ❌ folded "about" div with credits for any third party media used and link to my Github profile
+
 ### other ideas:
 - ❌ a graphic minefield
 - ❌ non-rectangular board shapes
@@ -63,9 +77,9 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 - ✅ replace numbers for images (preventing bad tile scaling)
 - ❌ language selector (english - spanish)
 
-### animations:
-- ✅ shockwave effect after revealing a mine
-- ❌ animation for board drawing 
+### sounds:
+- ❌ submarine sonar sound if there's propagation
+- ❌ explosion sound if game over
 
 # update 1
 Starting again with the game was a really good idea. I just made something in 44 lines of code that took me more than 100 lines in the previous version.
@@ -143,3 +157,11 @@ I've been busy today, so I didn't do much with the game, but at least now the an
 solved the first mine no animating. My first solution was partial, the mine would get only two scale changes and stop. Found the real problem: the listeners for `"transitionend"` were listening for any transition, so I limited it to just scale. Now the mine gets animated as the rest of the tiles. If you see the previous gif, you can notice the difference.
 
 ![gif](./media/READMEmd/progress08.gif)
+
+# update 9
+
+I just added a win condition, that will "alert" the player once all the non-mined tiles are revealed. This wasn't an easy task. I tried a lot of ways to add in the code a way to reduce the remaining count for every revealed tile, but the way I coded the reveal propagation had a fault: an already revealed tile will receive the "revealed" class again, and this will make the remaining count go down when it shouldn't. A simple `if` solved all the problems, also making sure a revealed tile will not receive a revealed class again.
+
+At this point the game can be played. You reveal a mine, you lose; you reveal all the empty tiles, you win. Now I can start working in the interface! As in the previous project, I want to add sliders for board width/height and number of mines (without letting the player put more mines than tiles).
+
+> the game have some important performance impact. Just moving the cursor over the tiles will make the CPU usage go up to 10%. Maybe it's because I'm using a lot of divs. Canvas may be the solution, but making simple games that way would be a totally different experience and I should learn a lot of new stuff to make the same I can do with divs. Maybe in the future.

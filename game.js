@@ -83,11 +83,9 @@ let board = {
     thisArr = this.array[y][x];
     thisTile.classList.add("revealed");
     this.imageDom(thisTile,thisArr);
-    //////////////////
     if(thisArr != "m"){
       this.remaining--;
     }
-    //////////////////
   },
   revealConnected(x,y){
     let surrounding = [];
@@ -95,8 +93,8 @@ let board = {
       surrounding = this.surroundingTiles(x,y)
       .filter(t => this.array[t[1]][t[0]] == 0
         && !this.tileDom(t[0],t[1]).className.includes("revealed"))
-
-      this.surroundingTiles(x,y).forEach(t => {
+        
+        this.surroundingTiles(x,y).forEach(t => {
         let thisTile = this.tileDom(t[0],t[1]);
         if(!thisTile.className.includes("revealed")){
           thisTile.classList.add("revealed");
@@ -108,6 +106,9 @@ let board = {
     setTimeout(() => {
       surrounding.forEach(t => this.revealConnected(t[0],t[1]))
     }, 20);
+    if(surrounding.length == 0){
+      this.winLoseCondition(x,y);
+    };
   },
   tileDom(x,y){
     return document.querySelector(`[x="${x}"][y="${y}"]`);
@@ -146,9 +147,10 @@ let board = {
       setTimeout(() => {
         this.revealMines();
       }, 4000);
-    } else if(this.remaining <= 0){
-      alert("player wins\nthis is a temporal message");
+    } else if(this.remaining <= 0 && gameOver == false){
       gameOver = true;
+      alert("player wins\nthis is a temporal message");
+      this.revealMines();
     };
   },
 };
@@ -228,4 +230,4 @@ let animations = {
 
 board.newGame();
 // console.table(board.array); //for debugging
-board.revealMines()  //for debugging
+// board.revealMines()  //for debugging
