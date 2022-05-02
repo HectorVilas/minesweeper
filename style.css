@@ -149,6 +149,10 @@ header {
   border: 5px ridge var(--color-page-2);
 }
 
+.button-menu {
+  z-index: 1;
+}
+
 .play-area {
   background-color: #ddd;
   border: 5px ridge white;
@@ -160,7 +164,46 @@ header {
   padding: 2px 7px;
 }
 
+/*prompts*/
 
+.hidden {
+  display: none;
+}
+
+.full-screen-container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  box-shadow: inset 0 0 20px black;
+}
+
+.prompt {
+  position: absolute;
+  border: 5px ridge var(--color-page-2);
+  border-radius: 17px;
+  background-color: var(--color-page-4);
+  width: 500px;
+  height: 300px;
+  box-shadow: 3px 3px 10px black;
+}.prompt-top {
+  padding: 2px;
+  background-color: var(--color-page-3);
+  border-bottom: 3px solid var(--color-page-2);
+  border-radius: 11px 11px 0 0;
+  /* margin-bottom: auto; */
+}.prompt-center{
+  padding: 10px;
+  flex: 1 1 auto;
+
+}.prompt-bottom{
+  margin-top: auto;
+}
+.prompt-button-x {
+  border-radius: 50%;
+  /* aspect-ratio: 1/1; */
+}.prompt-button-close{
+
+}
 
 /*for testing*/
 ** {

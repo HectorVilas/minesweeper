@@ -12,8 +12,9 @@
 <body>
   <header class="flex flex-justify-between">
     <p>Minesweeper</p>
-    <button>[=]</button>
+    <button class="button-menu">[=]</button>
   </header>
+
   <div class="content flex flex-h-center flex-v-center flex-column flex-item-auto">
     <div class="play-area flex flex-column">
       <div class="top-board flex">
@@ -24,6 +25,24 @@
       <div class="board flex"></div>
     </div>
   </div>
-  <!-- <footer>footer</footer> -->
+
+  <div class="full-screen-container flex flex-item-auto flex-h-center flex-v-center hidden">
+    
+    <div class="prompt flex flex-column">
+      
+      <div class="prompt-top flex flex-justify-between">
+        <p class="prompt-title">placeholder</p>
+        <button class="prompt-button-close prompt-button-x">X</button>
+      </div>
+
+      <div class="prompt-center flex">Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Ipsum quibusdam quia,
+        rerum magni at quae totam. Error quod quaerat aperiam?</div>
+
+      <div class="prompt-bottom flex flex-h-center">
+        <button class="prompt-button-close">Close</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
