@@ -228,6 +228,26 @@ let animations = {
   },
 };
 
+let interface = {
+  fullScreenContainer: document.querySelector(".full-screen-container"),
+  btnMenu: document.querySelector(".button-menu"),
+  btnsClose: document.querySelectorAll(".prompt-button-close"),
+  addListeners(){
+    this.btnMenu.addEventListener("click", () => {
+      this.toggleMenu();
+    });
+    this.btnsClose.forEach(btn => {
+      btn.addEventListener("click", () => {
+        this.toggleMenu();
+      });
+    })
+  },
+  toggleMenu(){
+    this.fullScreenContainer.classList.toggle("hidden");
+  },
+};
+
 board.newGame();
+interface.addListeners();
 // console.table(board.array); //for debugging
 // board.revealMines()  //for debugging
