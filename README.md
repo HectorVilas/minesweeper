@@ -165,3 +165,10 @@ I just added a win condition, that will "alert" the player once all the non-mine
 At this point the game can be played. You reveal a mine, you lose; you reveal all the empty tiles, you win. Now I can start working in the interface! As in the previous project, I want to add sliders for board width/height and number of mines (without letting the player put more mines than tiles).
 
 > the game have some important performance impact. Just moving the cursor over the tiles will make the CPU usage go up to 10%. Maybe it's because I'm using a lot of divs.
+
+# update 10
+As the game is now playable, I've been working with the `HTML` and `CSS` for the interface. I'm still too green with the `CSS`, but managed to make a message window that will show on top of whatever is on screen, except for the menu button at the top left.
+
+I also made another placeholder that will appear at the top of the board, like in the classic Minesweeper. It will always have the board width.
+
+All of this is just placeholders, now I should start placing something in those holders.
