@@ -167,8 +167,12 @@ At this point the game can be played. You reveal a mine, you lose; you reveal al
 > the game have some important performance impact. Just moving the cursor over the tiles will make the CPU usage go up to 10%. Maybe it's because I'm using a lot of divs.
 
 # update 10
-As the game is now playable, I've been working with the `HTML` and `CSS` for the interface. I'm still too green with the `CSS`, but managed to make a message window that will show on top of whatever is on screen, except for the menu button at the top left.
+As the game is now playable, I've been working with the `HTML` and `CSS` for the interface. I'm still too green with the `CSS`, but managed to make a message window that will show on top of whatever is on screen, except for the menu button at the top right.
 
 I also made another placeholder that will appear at the top of the board, like in the classic Minesweeper. It will always have the board width.
 
 All of this is just placeholders, now I should start placing something in those holders.
+
+![gif](./media/READMEmd/progress09.png)
+
+I like the `darkslateblue` in the background, but I'm not sure about the rest of the colors. I'm pretty sure I'll change the pallete in the future.
