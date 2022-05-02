@@ -49,8 +49,8 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 - - ❌ every flag must reduce the mine counter by one
 - - ❌ player can't put more flag than the number of mines
 - - ❌ in case of a present flag, it will be removed
-- ❌ when all mines has been discovered and tiles without mines revealed
-- - ❌ the game ends, announcing it
+- ✅ when all mines has been discovered and tiles without mines revealed
+- - ✅ the game ends, announcing it
 - - ❌ remaining flags will be placed over the mines
 - - ❌ the timer must stop
 
@@ -164,4 +164,4 @@ I just added a win condition, that will "alert" the player once all the non-mine
 
 At this point the game can be played. You reveal a mine, you lose; you reveal all the empty tiles, you win. Now I can start working in the interface! As in the previous project, I want to add sliders for board width/height and number of mines (without letting the player put more mines than tiles).
 
-> the game have some important performance impact. Just moving the cursor over the tiles will make the CPU usage go up to 10%. Maybe it's because I'm using a lot of divs. Canvas may be the solution, but making simple games that way would be a totally different experience and I should learn a lot of new stuff to make the same I can do with divs. Maybe in the future.
+> the game have some important performance impact. Just moving the cursor over the tiles will make the CPU usage go up to 10%. Maybe it's because I'm using a lot of divs.
