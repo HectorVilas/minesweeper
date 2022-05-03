@@ -151,11 +151,12 @@ let board = {
       animations.shockwave(x,y);
       setTimeout(() => {
         this.revealMines();
+        interface.showContent("lose");
       }, 4000);
     } else if(this.remaining <= 0 && gameOver == false){
       gameOver = true;
-      alert("player wins\nthis is a temporal message");
       this.revealMines();
+      interface.showContent("win");
     };
   },
 };
@@ -251,21 +252,33 @@ let interface = {
       sounds: document.querySelector("#sounds"),
     },
   },
-  btnMenu: document.querySelector(".button-menu"),
-  btnsClose: document.querySelectorAll(".prompt-button-close"),
-  btnsOk: document.querySelectorAll(".prompt-button-ok"),
+  buttons: {
+    menu: document.querySelector(".button-menu"),
+    close: document.querySelectorAll(".prompt-button-close"),
+    ok: document.querySelectorAll(".prompt-button-ok"),
+  },
+  
   addListeners(){
-    this.btnMenu.addEventListener("click", () => {
-      this.toggleMenu();
-    });
-    this.btnsClose.forEach(btn => {
+    this.buttons.menu.addEventListener("click", () => this.showContent("options"));
+    this.buttons.close.forEach(btn => {
       btn.addEventListener("click", () => {
-        this.toggleMenu();
+        this.fullScreenContainer.classList.toggle("hidden");
       });
     })
   },
-  toggleMenu(){
-    this.fullScreenContainer.classList.toggle("hidden");
+  
+  showContent(arr){
+    this.fullScreenContainer.classList.remove("hidden");
+    let options = document.querySelector(".options");
+    let win = document.querySelector(".win-message");
+    let lose = document.querySelector(".lose-message");
+
+    [options,win,lose].forEach(m => m.classList.add("hidden"));
+
+    arr == "options" ? options.classList.remove("hidden") :
+    arr == "win" ? win.classList.remove("hidden") :
+    arr == "lose" ? lose.classList.remove("hidden") :
+    alert(arr+" is not a valid parameter");
   },
 };
 
