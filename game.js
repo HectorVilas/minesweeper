@@ -95,15 +95,20 @@ let board = {
         && !this.tileDom(t[0],t[1]).className.includes("revealed"))
         
         this.surroundingTiles(x,y).forEach(t => {
-        let thisTile = this.tileDom(t[0],t[1]);
-        if(!thisTile.className.includes("revealed")){
-          thisTile.classList.add("revealed");
-          this.imageDom(thisTile, this.array[t[1]][t[0]]);
-          this.remaining--;
-        };
-      });
-    };
-    setTimeout(() => {
+          let thisTile = this.tileDom(t[0],t[1]);
+          if(!thisTile.className.includes("revealed")){
+            thisTile.classList.add("revealed");
+            this.imageDom(thisTile, this.array[t[1]][t[0]]);
+            this.remaining--;
+          };
+        });
+      };
+
+      if(surrounding.length > 0){
+        audio.playSound("sonar");
+      };
+
+      setTimeout(() => {
       surrounding.forEach(t => this.revealConnected(t[0],t[1]))
     }, 20);
     if(surrounding.length == 0){
@@ -200,6 +205,7 @@ let animations = {
     });
 
     this.tileExploding(x,y);
+    audio.playSound("explosion");
     board.tileDom(x,y).classList.add("z9");
     setTimeout(() => {
       this.valids([x-1,y-1],[x,y-1],[x+1,y-1],[x-1,y],[x+1,y],[x+1,y+1],[x,y+1],[x-1,y+1]).forEach(t =>{
@@ -244,6 +250,18 @@ let interface = {
   },
   toggleMenu(){
     this.fullScreenContainer.classList.toggle("hidden");
+  },
+};
+
+let audio = {
+  sonar: document.querySelector("#sonar"),
+  explosion: document.querySelector("#explosion"),
+  playSound(arr){
+    if(arr == "sonar"){
+      this.sonar.play()
+    } else if(arr == "explosion") {
+      this.explosion.play()
+    }
   },
 };
 
