@@ -21,6 +21,10 @@ button {
   background-color: var(--color-page-4);
   border: 3px outset white;
   border-radius: 3px;
+}button:hover {
+  background-color: white;
+}button:active {
+  background-color: #eee;
 }
 
 p {
@@ -64,6 +68,9 @@ p {
   flex-direction: row;
 }.flex-column {
   flex-direction: column;
+}
+.text-center {
+  text-align: center;
 }
 
 
@@ -207,8 +214,7 @@ header {
   border-radius: 50%;
   margin-left: -20px; /*for proper title center*/
   aspect-ratio: 1/1;
-}
-.prompt-center {
+}.prompt-center {
   background-color: var(--color-page-4);
   padding: 15px;
   flex: 1 1 auto;
@@ -217,6 +223,22 @@ header {
   margin-top: auto;
   padding: 10px;
   border-radius: 0 0 15px 15px;
+}.prompt-bottom>button {
+  display: flex;
+  flex: 0 0 auto;
+  width: 100px;
+  justify-content: center;
+}
+
+/*prompt content*/
+.options{
+  font-size: 18px;
+}
+.win-message,
+.lose-message{
+  color: var(--text-color-2);
+  font-size: 50px;
+  text-align: center;
 }
 
 /*for testing*/

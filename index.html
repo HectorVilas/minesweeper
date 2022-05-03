@@ -15,6 +15,7 @@
     <button class="button-menu">[=]</button>
   </header>
 
+  <!--game-->
   <div class="content flex flex-h-center flex-v-center flex-column flex-item-auto">
     <div class="play-area flex flex-column">
       <div class="top-board flex">
@@ -27,23 +28,55 @@
   </div>
 
   <div class="full-screen-container flex flex-item-auto flex-h-center flex-v-center hidden">
-    
+    <!--window in center-->
     <div class="prompt flex flex-column">
-      
-      <div class="prompt-top flex flex-justify-between">
-        <p class="prompt-title">placeholder</p>
+      <!--top-->
+      <div class="prompt-top flex">
+        <div class="prompt-title flex flex-item-auto flex-h-center">
+          <p class="prompt-title-text">placeholder</p>
+        </div>
         <button class="prompt-button-close prompt-button-x">X</button>
       </div>
-
-      <div class="prompt-center flex">Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Ipsum quibusdam quia,
-        rerum magni at quae totam. Error quod quaerat aperiam?</div>
-        
-        <div class="prompt-bottom flex flex-h-center">
-          <button class="prompt-button-close">Close</button>
+      <!--middle-->
+      <div class="prompt-center flex flex-h-center">
+        <!--options-->
+        <div class="options flex flex-item-auto flex-h-center flex-column text-center hidden">
+          <form action="">
+            <fieldset class="flex flex-h-center flex-column">
+              <legend>Width</legend>
+              <input type="range" name="board-width" id="board-width" min="5" max="50" value="20">
+              <output class="board-width" for="board-width">00</output>
+            </fieldset>
+            <fieldset class="flex flex-h-center flex-column">
+              <legend>Height</legend>
+              <input type="range" name="board-height" id="board-height" min="5" max="50" value="10">
+              <output class="board-height" for="board-height">00</output>
+            </fieldset>
+            <fieldset class="flex flex-h-center flex-column">
+              <legend>Mines</legend>
+              <input type="range" name="mines" id="mines" min="5" max="50" value="30">
+              <output class="mines" for="mines">00</output>
+            </fieldset>
+            <fieldset class="flex flex-h-center">
+              <legend>Audio</legend>
+              <label for="sounds">Play sounds:</label>
+              <input type="checkbox" name="sounds" id="sounds" checked>
+            </fieldset>
+          </form>
         </div>
+        <!--win message-->
+        <div class="win-message hidden"><p>YOU WIN</p></div>
+        <!--lose message-->
+        <div class="lose-message hidden"><p>You lose</p></div>
+      </div>
+      <!--bottom-->
+      <div class="prompt-bottom flex flex-h-center flex-justify-around">
+        <button class="prompt-button-ok">Ok</button>
+        <button class="prompt-button-close">Cancel</button>
       </div>
     </div>
+  </div>
+
     <audio id="sonar" src="./media/audio/sonar.wav"></audio>
     <audio id="explosion" src="./media/audio/underwater-explosion.ogg"></audio>
   </body>
