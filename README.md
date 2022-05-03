@@ -184,3 +184,6 @@ I'll give credit to their respective authors in the game itself, but while I don
 
 - [Sonar](https://freesound.org/people/NoiseCollector/sounds/6164/) sound by [NoiseCollector](https://freesound.org/people/NoiseCollector/) on freesound.org
 - [Underwater explosion](https://freesound.org/people/VitaWrap/sounds/434545/) sound by [VitaWrap](https://freesound.org/people/VitaWrap/) on freesound.org
+
+# update 12
+Today I've been making some changes on the page style. Also prepared the prompt to show or hide whatever is needed on it. The "options" menu is ready but won't be displayed yet. I still have to code that window.
