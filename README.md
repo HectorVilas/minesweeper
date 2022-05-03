@@ -60,7 +60,7 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 - - ❌ expand the shockwave to the rest of the board
 - ❌ animation for board drawing 
 #### interface
-- ❌ prompt made of divs with absolute position to show in the middle of the screen, over the board itself
+- ✅ prompt made of divs with absolute position to show in the middle of the screen, over the board itself
 - - ❌ if player wins/loses must include "play again" and close buttons
 - ❌ "burger" button to show menu on the right of the screen
 - - ❌ sliders for board width/height and number of mines
@@ -71,15 +71,15 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 ### other ideas:
 - ❌ a graphic minefield
 - ❌ non-rectangular board shapes
-- ❌ sounds
+- ✅ sounds
 - - ❌ sound toggle button in options
 - ❌ show the README.md in the page (may create a new repo for this)
 - ✅ replace numbers for images (preventing bad tile scaling)
 - ❌ language selector (english - spanish)
 
 ### sounds:
-- ❌ submarine sonar sound if there's propagation
-- ❌ explosion sound if game over
+- ✅ submarine sonar sound if there's propagation
+- ✅ explosion sound if game over
 
 # update 1
 Starting again with the game was a really good idea. I just made something in 44 lines of code that took me more than 100 lines in the previous version.
@@ -176,3 +176,11 @@ All of this is just placeholders, now I should start placing something in those 
 ![gif](./media/READMEmd/progress09.png)
 
 I like the `darkslateblue` in the background, but I'm not sure about the rest of the colors. I'm pretty sure I'll change the pallete in the future.
+
+# update 11
+I just added two sounds: a submarine sonar for the reveal propagation and an underwater sound for the explosion.
+
+I'll give credit to their respective authors in the game itself, but while I don't have it ready, here it is:
+
+- [Sonar](https://freesound.org/people/NoiseCollector/sounds/6164/) sound by [NoiseCollector](https://freesound.org/people/NoiseCollector/) on freesound.org
+- [Underwater explosion](https://freesound.org/people/VitaWrap/sounds/434545/) sound by [VitaWrap](https://freesound.org/people/VitaWrap/) on freesound.org
