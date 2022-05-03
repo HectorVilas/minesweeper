@@ -236,8 +236,24 @@ let animations = {
 
 let interface = {
   fullScreenContainer: document.querySelector(".full-screen-container"),
+  prompt: {
+    title: document.querySelector(".prompt-title-text"),
+    win: document.querySelector(".win-message"),
+    lose: document.querySelector(".lose-message"),
+    options: {
+      dom: document.querySelector(".options"),
+      width: document.querySelector("#board-width"),
+      widthDisplay: document.querySelector(".board-width"),
+      height: document.querySelector("#board-height"),
+      heightDisplay: document.querySelector(".board-height"),
+      mines: document.querySelector("#mines"),
+      minesDisplay: document.querySelector(".mines"),
+      sounds: document.querySelector("#sounds"),
+    },
+  },
   btnMenu: document.querySelector(".button-menu"),
   btnsClose: document.querySelectorAll(".prompt-button-close"),
+  btnsOk: document.querySelectorAll(".prompt-button-ok"),
   addListeners(){
     this.btnMenu.addEventListener("click", () => {
       this.toggleMenu();
