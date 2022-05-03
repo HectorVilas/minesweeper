@@ -2,7 +2,7 @@
   --color-page-1: #5c529e;
   --color-page-2: #C3C3E5;
   --color-page-4: #F1F0FF;
-  --color-page-3: #9d69ac;
+  --color-page-3: #6997ac;
   --text-color-1: #000000;
   --text-color-2: #282828;
   --text-color-3: #505050;
@@ -15,6 +15,12 @@ body {
   margin: 0;
   background-color: var(--color-page-1);
   font-family: 'Times New Roman', Times, serif;
+}
+
+button {
+  background-color: var(--color-page-4);
+  border: 3px outset white;
+  border-radius: 3px;
 }
 
 p {
@@ -43,6 +49,8 @@ p {
   justify-content: flex-end;
 }.flex-justify-between {
   justify-content: space-between;
+}.flex-justify-around {
+  justify-content: space-around;
 }
 .flex-v-center {
   align-items: center;
@@ -96,15 +104,19 @@ p {
 .boom1 {
   transition: ease-in-out 300ms;
   scale: 200%;
+  box-shadow: 0 0 50px darkred;
 }.boom2 {
   transition: ease-in-out 400ms;
   scale: 40%;
+  box-shadow: 0 0 50px orangered;
 }.boom3 {
   transition: ease-in-out 600ms;
   scale: 150%;
+  box-shadow: 0 0 50px yellow;
 }.boom4 {
   transition: ease-in-out 800ms;
   scale: 80%;
+  box-shadow: 0 0 50px white;
 }.boom5 {
   transition: ease-in-out 1500ms;
   scale: 100%;
@@ -147,7 +159,7 @@ p {
 header {
   background-color: var(--color-page-2);
   padding: 5px;
-  border: 5px ridge var(--color-page-2);
+  box-shadow: 0 0 5px black;
 }
 
 .button-menu {
@@ -180,30 +192,31 @@ header {
 
 .prompt {
   position: absolute;
-  border: 5px ridge var(--color-page-2);
-  border-radius: 17px;
-  background-color: var(--color-page-4);
-  width: 500px;
-  height: 300px;
+  z-index: 99; /*prevents animations to appear on top*/
+  width: 400px;
+  border-radius: 16px;
   box-shadow: 3px 3px 10px black;
-}.prompt-top {
-  padding: 2px;
-  background-color: var(--color-page-3);
-  border-bottom: 3px solid var(--color-page-2);
-  border-radius: 11px 11px 0 0;
-  /* margin-bottom: auto; */
-}.prompt-center{
-  padding: 10px;
-  flex: 1 1 auto;
-
-}.prompt-bottom{
-  margin-top: auto;
 }
-.prompt-button-x {
+.prompt-top {
+  padding: 2px;
+  border-radius: 15px 15px 0 0;
+  background-color: var(--color-page-3);
+  padding: 5px 10px;
+}.prompt-button-x {
+  margin-left: auto;
   border-radius: 50%;
-  /* aspect-ratio: 1/1; */
-}.prompt-button-close{
-
+  margin-left: -20px; /*for proper title center*/
+  aspect-ratio: 1/1;
+}
+.prompt-center {
+  background-color: var(--color-page-4);
+  padding: 15px;
+  flex: 1 1 auto;
+}.prompt-bottom {
+  background-color: var(--color-page-4);
+  margin-top: auto;
+  padding: 10px;
+  border-radius: 0 0 15px 15px;
 }
 
 /*for testing*/
