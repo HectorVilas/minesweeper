@@ -62,7 +62,7 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 #### interface
 - ✅ prompt made of divs with absolute position to show in the middle of the screen, over the board itself
 - - ❌ if player wins/loses must include "play again" and close buttons
-- ❌ "burger" button to show menu on the right of the screen
+- ✅ "burger" button to show menu on the right of the screen
 - - ❌ sliders for board width/height and number of mines
 - - ❌ folded "how to play" div with instructions
 - - - ❌ include gifs showing how to play
@@ -173,7 +173,7 @@ I also made another placeholder that will appear at the top of the board, like i
 
 All of this is just placeholders, now I should start placing something in those holders.
 
-![gif](./media/READMEmd/progress09.png)
+![prompt](./media/READMEmd/progress09.png)
 
 I like the `darkslateblue` in the background, but I'm not sure about the rest of the colors. I'm pretty sure I'll change the pallete in the future.
 
@@ -187,3 +187,7 @@ I'll give credit to their respective authors in the game itself, but while I don
 
 # update 12
 Today I've been making some changes on the page style. Also prepared the prompt to show or hide whatever is needed on it. The "options" menu is ready but won't be displayed yet. I still have to code that window.
+
+**note:** done. The code was easy. I made a function that hides everything in the prompt, then shows what it's parameter tells it. Of course, I still have to work in the options itself. Those sliders and checkbox will do nothing for now.
+
+![options menu](./media/READMEmd/progress10.png)
