@@ -8,6 +8,7 @@ let board = {
   remaining: undefined,
   array: [], //each array inside: [Y position, X position]
   newGame(){
+    gameOver = false;
     this.remaining = this.width*this.height-this.mines;
     this.arrayBoard();
     this.placeMines();
@@ -259,7 +260,7 @@ let interface = {
   buttons: {
     menu: document.querySelector(".button-menu"),
     close: document.querySelectorAll(".prompt-button-close"),
-    ok: document.querySelectorAll(".prompt-button-ok"),
+    ok: document.querySelector(".prompt-button-ok"),
   },
   
   addListeners(){
@@ -267,6 +268,15 @@ let interface = {
       btn.addEventListener("click", () => {
         this.prompt.fullScreenContainer.classList.toggle("hidden");
       });
+    });
+    this.buttons.ok.addEventListener("click", () => {//action depending prompt
+      let text = this.prompt.title.innerText;
+      if(text == "Options" || text == "You win" || text == "You lose"){
+        board.newGame();
+        this.showPrompt("hidden");
+      } else {
+        this.showPrompt("hidden");
+      }
     });
     this.buttons.menu.addEventListener("click", () => { //burger button
       this.dropDown.menu.classList.toggle("hidden-dropdown");
@@ -333,10 +343,12 @@ let interface = {
       this.prompt.title.innerText = "About";
     }else if(arr == "win"){
       win.classList.remove("hidden");
-      this.prompt.title.innerText = "You win!";
+      this.prompt.title.innerText = "You win";
     }else if(arr == "lose"){
       lose.classList.remove("hidden");
       this.prompt.title.innerText = "You lose";
+    }else if(arr = "none"){
+      this.prompt.fullScreenContainer.classList.toggle("hidden");
     }else{
       alert(arr+" is not a valid parameter");
     }
