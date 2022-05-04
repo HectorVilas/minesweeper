@@ -191,3 +191,8 @@ Today I've been making some changes on the page style. Also prepared the prompt 
 **note:** done. The code was easy. I made a function that hides everything in the prompt, then shows what it's parameter tells it. Of course, I still have to work in the options itself. Those sliders and checkbox will do nothing for now.
 
 ![options menu](./media/READMEmd/progress10.png)
+
+# update 13
+This time i've been working on the different prompts. First of all, I added a dropdown menu (not styled yet) that will show "options", "how to play" and "about" buttons. Once one of them is clicked, the dropdown will hide and the prompt will show with the necessary message. I used a single prompt window, the only thing that changes is what is going to be shown on it, because everything is present, but hidden by default.
+
+The "Ok" button and the options still does nothing. May be my next step in this project.
