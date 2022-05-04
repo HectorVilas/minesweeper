@@ -22,18 +22,18 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 
 ### game options and buttons:
 - ❌ how to play
-- ❌ settings
-- - ❌ number of mines
-- - ❌ board size (X and Y)
-- ❌ about
-- - ❌ link to my Github profile
-- - ❌ credits for any media I may use
+- ✅ settings
+- - ✅ number of mines
+- - ✅ board size (X and Y)
+- ✅ about
+- - ✅ link to my Github profile
+- - ✅ credits for any media I may use
 
 ### board generation:
 - ✅ the board must be generated
-- - ❌ width and height defined by option settings
+- - ✅ width and height defined by option settings
 - ✅ mines will be hidden in the board
-- - ❌ quantity defined by option settings
+- - ✅ quantity defined by option settings
 - - ✅ the position will be randomized
 
 ### game logic:
@@ -61,12 +61,12 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 - ❌ animation for board drawing 
 #### interface
 - ✅ prompt made of divs with absolute position to show in the middle of the screen, over the board itself
-- - ❌ if player wins/loses must include "play again" and close buttons
+- - ✅ if player wins/loses must include "play again" and close buttons
 - ✅ "burger" button to show menu on the right of the screen
-- - ❌ sliders for board width/height and number of mines
-- - ❌ folded "how to play" div with instructions
+- - ✅ sliders for board width/height and number of mines
+- - ✅ ~~folded "how to play" div with instructions~~ "how to play" option
 - - - ❌ include gifs showing how to play
-- - ❌ folded "about" div with credits for any third party media used and link to my Github profile
+- - ✅ ~~folded~~ "about" div with credits for any third party media used and link to my Github profile
 
 ### other ideas:
 - ❌ a graphic minefield
@@ -196,3 +196,7 @@ Today I've been making some changes on the page style. Also prepared the prompt 
 This time i've been working on the different prompts. First of all, I added a dropdown menu (not styled yet) that will show "options", "how to play" and "about" buttons. Once one of them is clicked, the dropdown will hide and the prompt will show with the necessary message. I used a single prompt window, the only thing that changes is what is going to be shown on it, because everything is present, but hidden by default.
 
 The "Ok" button and the options still does nothing. May be my next step in this project.
+
+**Note:** added credits for the sound authors in "About/credits" menu.
+
+**Note 2:** now the option settings are functional. The max number of mines can't be higher than `board.width * board.height`.
