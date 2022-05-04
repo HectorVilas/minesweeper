@@ -200,3 +200,7 @@ The "Ok" button and the options still does nothing. May be my next step in this 
 **Note:** added credits for the sound authors in "About/credits" menu.
 
 **Note 2:** now the option settings are functional. The max number of mines can't be higher than `board.width * board.height`.
+
+![gif](./media/READMEmd/progress11.gif)
+
+> I have something to confess: I've been making some personal projects not only for practice, but also to avoid finishing reading about forms (interesting but boring). As you can see in the gif, I ended using what I've learned about forms, heh!
