@@ -245,8 +245,8 @@ let interface = {
       widthDisplay: document.querySelector(".board-width"),
       height: document.querySelector("#board-height"),
       heightDisplay: document.querySelector(".board-height"),
-      mines: document.querySelector("#mines"),
-      minesDisplay: document.querySelector(".mines"),
+      mines: document.querySelector("#mines-count"),
+      minesDisplay: document.querySelector(".mines-count"),
       sounds: document.querySelector("#sounds"),
     },
   },
@@ -283,6 +283,33 @@ let interface = {
       this.dropDown.menu.classList.toggle("hidden-dropdown");
       this.showPrompt("about");
     });
+    //options related
+    this.prompt.options.width.addEventListener("input", () => {
+      board.width =
+      this.prompt.options.widthDisplay.innerText =
+      this.prompt.options.width.value;
+      this.limitMaxMines();
+    });
+    this.prompt.options.height.addEventListener("input", () => {
+      board.height =
+      this.prompt.options.heightDisplay.innerText =
+      this.prompt.options.height.value;
+      this.limitMaxMines();
+    });
+    this.prompt.options.mines.addEventListener("input", () => {
+      board.mines =
+      this.prompt.options.minesDisplay.innerText =
+      this.prompt.options.mines.value;
+    });
+  },
+  
+  limitMaxMines(){
+    this.prompt.options.mines.max = board.width*board.height;
+    if(board.width*board.height < board.mines){
+      board.mines =
+      this.prompt.options.minesDisplay.innerText =
+      board.width*board.height;
+    };
   },
   
   showPrompt(arr){
@@ -330,5 +357,15 @@ let audio = {
 
 board.newGame();
 interface.addListeners();
+//default settings
+interface.prompt.options.widthDisplay.innerText =
+interface.prompt.options.width.value =
+board.width;
+interface.prompt.options.heightDisplay.innerText =
+interface.prompt.options.height.value =
+board.height;
+interface.prompt.options.minesDisplay.innerText =
+interface.prompt.options.height.value =
+board.mines;
 // console.table(board.array); //for debugging
 // board.revealMines()  //for debugging
