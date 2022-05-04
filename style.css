@@ -161,16 +161,21 @@ p {
 
 /* - - - specifics - - - */
 
+
 /*interface*/
 
 header {
   background-color: var(--color-page-2);
-  padding: 5px;
+  /* padding: 3px; */
   box-shadow: 0 0 5px black;
 }
 
 .button-menu {
+  --size: 25px;
   z-index: 1;
+  width: var(--size);
+  height: var(--size);
+  margin-right: calc(var(--size)*-1);
 }
 
 .play-area {
@@ -183,6 +188,7 @@ header {
   border-bottom: 4px ridge white;
   padding: 2px 7px;
 }
+
 
 /*prompts*/
 
@@ -209,11 +215,14 @@ header {
   border-radius: 15px 15px 0 0;
   background-color: var(--color-page-3);
   padding: 5px 10px;
+  font-size: 20px;
 }.prompt-button-x {
+  --size: 30px;
   margin-left: auto;
   border-radius: 50%;
-  margin-left: -20px; /*for proper title center*/
-  aspect-ratio: 1/1;
+  width: var(--size);
+  height: var(--size);
+  margin-left: calc(var(--size)*-1);
 }.prompt-center {
   background-color: var(--color-page-4);
   padding: 15px;
@@ -231,8 +240,9 @@ header {
 }
 
 /*prompt content*/
+
 .options{
-  font-size: 18px;
+  font-size: 20px;
 }
 .win-message,
 .lose-message{
@@ -240,6 +250,8 @@ header {
   font-size: 50px;
   text-align: center;
 }
+
+
 
 /*for testing*/
 ** {
