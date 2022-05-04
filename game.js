@@ -151,12 +151,12 @@ let board = {
       animations.shockwave(x,y);
       setTimeout(() => {
         this.revealMines();
-        interface.showContent("lose");
+        interface.showPrompt("lose");
       }, 4000);
     } else if(this.remaining <= 0 && gameOver == false){
       gameOver = true;
       this.revealMines();
-      interface.showContent("win");
+      interface.showPrompt("win");
     };
   },
 };
@@ -236,11 +236,9 @@ let animations = {
 };
 
 let interface = {
-  fullScreenContainer: document.querySelector(".full-screen-container"),
   prompt: {
+    fullScreenContainer: document.querySelector(".full-screen-container"),
     title: document.querySelector(".prompt-title-text"),
-    win: document.querySelector(".win-message"),
-    lose: document.querySelector(".lose-message"),
     options: {
       dom: document.querySelector(".options"),
       width: document.querySelector("#board-width"),
@@ -252,6 +250,12 @@ let interface = {
       sounds: document.querySelector("#sounds"),
     },
   },
+  dropDown: {
+    menu: document.querySelector(".dropdown-menu"),
+    options: document.querySelector(".dropdown-options"),
+    howToPlay: document.querySelector(".dropdown-how-to-play"),
+    about: document.querySelector(".dropdown-about"),
+  },
   buttons: {
     menu: document.querySelector(".button-menu"),
     close: document.querySelectorAll(".prompt-button-close"),
@@ -259,26 +263,56 @@ let interface = {
   },
   
   addListeners(){
-    this.buttons.menu.addEventListener("click", () => this.showContent("options"));
-    this.buttons.close.forEach(btn => {
+    this.buttons.close.forEach(btn => {//cancel-close buttons
       btn.addEventListener("click", () => {
-        this.fullScreenContainer.classList.toggle("hidden");
+        this.prompt.fullScreenContainer.classList.toggle("hidden");
       });
-    })
+    });
+    this.buttons.menu.addEventListener("click", () => { //burger button
+      this.dropDown.menu.classList.toggle("hidden-dropdown");
+    });
+    this.dropDown.options.addEventListener("click", () => {
+      this.dropDown.menu.classList.toggle("hidden-dropdown");
+      this.showPrompt("options");
+    });
+    this.dropDown.howToPlay.addEventListener("click", () => {
+      this.dropDown.menu.classList.toggle("hidden-dropdown");
+      this.showPrompt("how-to-play");
+    });
+    this.dropDown.about.addEventListener("click", () => {
+      this.dropDown.menu.classList.toggle("hidden-dropdown");
+      this.showPrompt("about");
+    });
   },
   
-  showContent(arr){
-    this.fullScreenContainer.classList.remove("hidden");
+  showPrompt(arr){
+    this.prompt.fullScreenContainer.classList.remove("hidden");
     let options = document.querySelector(".options");
+    let howToPlay = document.querySelector(".how-to-play");
+    let about = document.querySelector(".about");
     let win = document.querySelector(".win-message");
     let lose = document.querySelector(".lose-message");
 
-    [options,win,lose].forEach(m => m.classList.add("hidden"));
+    [options,howToPlay,about,win,lose].forEach(m => m.classList.add("hidden"));
 
-    arr == "options" ? options.classList.remove("hidden") :
-    arr == "win" ? win.classList.remove("hidden") :
-    arr == "lose" ? lose.classList.remove("hidden") :
-    alert(arr+" is not a valid parameter");
+    if(arr == "options"){
+      options.classList.remove("hidden");
+      this.prompt.title.innerText = "Options";
+    }else if(arr == "how-to-play"){
+      howToPlay.classList.remove("hidden");
+      this.prompt.title.innerText = "How to play";
+    }else if(arr == "about"){
+      about.classList.remove("hidden");
+      this.prompt.title.innerText = "About";
+    }else if(arr == "win"){
+      win.classList.remove("hidden");
+      this.prompt.title.innerText = "You win!";
+    }else if(arr == "lose"){
+      lose.classList.remove("hidden");
+      this.prompt.title.innerText = "You lose";
+    }else{
+      alert(arr+" is not a valid parameter");
+    }
   },
 };
 

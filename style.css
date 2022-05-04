@@ -111,15 +111,15 @@ p {
 .boom1 {
   transition: ease-in-out 300ms;
   scale: 200%;
-  box-shadow: 0 0 50px darkred;
+  box-shadow: 0 0 20px darkred;
 }.boom2 {
   transition: ease-in-out 400ms;
   scale: 40%;
-  box-shadow: 0 0 50px orangered;
+  box-shadow: 0 0 30px orangered;
 }.boom3 {
   transition: ease-in-out 600ms;
   scale: 150%;
-  box-shadow: 0 0 50px yellow;
+  box-shadow: 0 0 40px yellow;
 }.boom4 {
   transition: ease-in-out 800ms;
   scale: 80%;
@@ -168,6 +168,7 @@ header {
   background-color: var(--color-page-2);
   /* padding: 3px; */
   box-shadow: 0 0 5px black;
+  z-index: 98;
 }
 
 .button-menu {
@@ -176,6 +177,25 @@ header {
   width: var(--size);
   height: var(--size);
   margin-right: calc(var(--size)*-1);
+}
+
+.dropdown-menu {
+  position: absolute;
+  z-index: 97;
+  background-color: var(--color-page-3);
+  padding: 32px 0 0 0;
+  transition: 200ms;
+}.dropdown-option {
+  padding: 10px;
+}.dropdown-option:hover {
+  background-color: var(--color-page-2);
+  transition: 200ms;
+}.dropdown-option:active {
+  background-color: var(--color-page-4);
+  transition: 50ms;
+}.hidden-dropdown{
+  margin-top: -150px;
+  transition: 200ms;
 }
 
 .play-area {

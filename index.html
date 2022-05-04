@@ -14,6 +14,12 @@
     <img class="button-menu" src="./media/images/menu.png">
     <div class="flex flex-item-auto flex-h-center"><p>Minesweeper</p></div>
   </header>
+  <!--dropdown-->
+  <div class="dropdown-menu hidden-dropdown flex flex-column">
+    <button class="dropdown-option dropdown-options"><p>Game options</p></button>
+    <button class="dropdown-option dropdown-how-to-play"><p>How to play</p></button>
+    <button class="dropdown-option dropdown-about"><p>About/credits</p></button>
+  </div>
 
   <!--game-->
   <div class="content flex flex-h-center flex-v-center flex-column flex-item-auto">
@@ -64,10 +70,14 @@
             </fieldset>
           </form>
         </div>
+        <!--How to play-->
+        <div class="how-to-play hidden">how-to-play placeholder</div>
+        <!--about/credits-->
+        <div class="about hidden">about/credits placeholder</div>
         <!--win message-->
-        <div class="win-message hidden"><p>YOU WIN</p></div>
+        <div class="win-message hidden"><p>YOU WIN!</p><p>Play again?</p></div>
         <!--lose message-->
-        <div class="lose-message hidden"><p>You lose</p></div>
+        <div class="lose-message hidden"><p>A mine exploded!</p><p>Play again?</p></div>
       </div>
       <!--bottom-->
       <div class="prompt-bottom flex flex-h-center flex-justify-around">
