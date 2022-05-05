@@ -407,7 +407,7 @@ interface.prompt.options.heightDisplay.innerText =
 interface.prompt.options.height.value =
 board.height;
 interface.prompt.options.minesDisplay.innerText =
-interface.prompt.options.height.value =
+interface.prompt.options.mines.value =
 board.mines;
 // console.table(board.array); //for debugging
 // board.revealMines()  //for debugging
