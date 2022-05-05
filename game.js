@@ -50,15 +50,15 @@ let board = {
       this.dom.appendChild(row);
     };
   },
-  randIndex(num){
+  rand(num){
     return parseInt(Math.floor(Math.random()*num));
   },
   placeMines(){
     let x, y;
     for(let i = 0; i < this.mines; i++){
       do {
-        x = this.randIndex(this.width);
-        y = this.randIndex(this.height);
+        x = this.rand(this.width);
+        y = this.rand(this.height);
       } while(this.array[y][x] == "m");
       this.array[y][x] = "m";
       this.surroundingTiles(x,y).forEach( t => this.array[t[1]][t[0]] += 1);
@@ -147,9 +147,10 @@ let board = {
     });
   },
   winLoseCondition(x,y){
-    if(this.array[y][x] == "m"){
+    if(this.array[y][x] == "m" && gameOver == false){
       gameOver = true;
       animations.shockwave(x,y);
+      animations.screenShake();
       setTimeout(() => {
         this.revealMines();
         setTimeout(() => {
@@ -239,6 +240,29 @@ let animations = {
         board.tileDom(t[0],t[1]).classList.add("z5");
       });
     }, 400);
+  },
+
+  screenShake(){
+    let target = document.querySelector(".play-area");
+    let slowDown = 10; //number of shakes
+    let timeOut = 100;
+    let x = board.rand(slowDown*2);
+    let y = board.rand(slowDown*2);
+    //firsh shake without delay
+    target.style.transition = `ease-out ${timeOut*(slowDown+1)}ms`;
+    target.style.marginLeft = `${x}px`;
+    target.style.marginTop = `${y}px`;
+    for(let i = slowDown; i > 0; i--){
+      setTimeout(() => {
+        target.style.transition = `ease-in-out ${timeOut}ms`;
+        x = board.rand(slowDown*3);
+        y = board.rand(slowDown*3);
+        i%2 == 0 ? x *= -1 : y *= -1;
+        target.style.marginLeft = `${x}px`;
+        target.style.marginTop = `${y}px`;
+        slowDown--;
+      }, timeOut*(i+1));
+    }
   },
 };
 
