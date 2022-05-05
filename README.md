@@ -204,3 +204,14 @@ The "Ok" button and the options still does nothing. May be my next step in this 
 ![gif](./media/READMEmd/progress11.gif)
 
 > I have something to confess: I've been making some personal projects not only for practice, but also to avoid finishing reading about forms (interesting but boring). As you can see in the gif, I ended using what I've learned about forms, heh!
+
+# update 14
+I've fixed a problem with `winLoseCondition()`, it was being executed twice. After fixing it, I made another animation: the board will shake once a mine explodes. The first shake looks like it last too much, I'm not sure how to fix that, but for now it's good enough. Maybe I'll change it in the future, may be annoying to see it too often. Another little unwanted detail is how the board will not go back to it's original position, but it's just 1 pixel offset, nothing else. Still may fix in the future.
+
+![gif](./media/READMEmd/progress12.gif)
+
+As an extra, there was a wrong DOM value being modified in the options menu, that's why the "height" slider in the gif above didn't moved the "mines" slider properly until the first modification.
+
+I think it's time to do something with those displays and the face in the center, these are still placeholders. Also the game still have no flags, it's harder to play without those.
+
+There's a lot of work to do to finish this project, I don't want to move to another personal project until this one is done.
