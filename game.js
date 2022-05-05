@@ -152,12 +152,18 @@ let board = {
       animations.shockwave(x,y);
       setTimeout(() => {
         this.revealMines();
-        interface.showPrompt("lose");
-      }, 4000);
+        setTimeout(() => {
+          interface.showPrompt("lose");
+        }, 1000);
+      }, 2500);
     } else if(this.remaining <= 0 && gameOver == false){
       gameOver = true;
-      this.revealMines();
-      interface.showPrompt("win");
+      setTimeout(() => {
+        this.revealMines();
+        setTimeout(() => {
+          interface.showPrompt("win");
+        }, 500);
+      }, 500);
     };
   },
 };
