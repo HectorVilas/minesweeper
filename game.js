@@ -10,6 +10,7 @@ let board = {
   mines: 30,
   remaining: undefined,
   array: [], //each array inside: [Y position, X position]
+  //setting the starting config
   newGame(){
     gameOver = false;
     firstMine = [];
@@ -17,6 +18,7 @@ let board = {
     this.arrayBoard();
     this.drawBoard();
   },
+  //mine reveal on click
   leftClickAction(x,y){
     if(firstMine.length == 0){
       firstMine = [x,y];
@@ -26,6 +28,7 @@ let board = {
     this.revealConnected(x,y);
     this.winLoseCondition(x,y);
   },
+  //creates a 2D array containing the board
   arrayBoard(){
     this.array = []; //cleaning before starting another game
     for(let y = 0; y < this.height; y++){
@@ -35,6 +38,7 @@ let board = {
       };
     };
   },
+  //draws the array board on screen with divs
   drawBoard(){
     this.dom.innerHTML = "";
     for (let y = 0; y < this.height; y++) {
@@ -61,9 +65,11 @@ let board = {
       this.dom.appendChild(row);
     };
   },
+  //random number generator, between 0 and any specified number
   rand(num){
     return parseInt(Math.floor(Math.random()*num));
   },
+  //put mines in the array board, avoiding placing more than one in the same tile
   placeMines(){
     let x, y;
     for(let i = 0; i < this.mines; i++){
@@ -75,6 +81,7 @@ let board = {
       this.surroundingTiles(x,y).forEach( t => this.array[t[1]][t[0]] += 1);
     };
   },
+  //checks if the tile coordinates are in the board and doesn't contain a mine
   emptyValid(arr){
     if(arr[0] >= 0 && arr[0] < this.width
       && arr[1] >= 0 && arr[1] < this.height
@@ -83,6 +90,7 @@ let board = {
       return arr;
     };
   },
+  //returns an array with only valid surrounding tiles
   surroundingTiles(x,y){
     return [this.emptyValid([x,y-1]), this.emptyValid([x+1,y-1]),
     this.emptyValid([x+1,y]), this.emptyValid([x+1,y+1]),
@@ -90,15 +98,17 @@ let board = {
     this.emptyValid([x-1,y]), this.emptyValid([x-1,y-1])]
     .filter(t => t !== undefined);
   },
+  //place tile's image and reduce remaining mines if there's no mine
   revealTile(x,y){
     let thisTile = this.tileDom(x,y);
-    thisArr = this.array[y][x];
+    let thisArr = this.array[y][x];
     thisTile.classList.add("revealed");
     this.imageDom(thisTile,thisArr);
     if(thisArr != "m"){
       this.remaining--;
     }
   },
+  //recursive surrounding tiles reveal, also reduces remaining for each
   revealConnected(x,y){
     let surrounding = [];
     if(this.array[y][x] == 0){
@@ -127,9 +137,11 @@ let board = {
       this.winLoseCondition(x,y);
     };
   },
+  //short way to point to a specific tile in the DOM
   tileDom(x,y){
     return document.querySelector(`[x="${x}"][y="${y}"]`);
   },
+  //adds an image to the revealed tile, be number or mine
   imageDom(tile, value){
     tile.innerHTML = "";
     let image = document.createElement("img");
@@ -144,6 +156,7 @@ let board = {
       tile.appendChild(image);
     };
   },
+  //show all mines on board, either after winning or losing the game
   revealMines(){
     let positions = [];
     for (let y = 0; y < this.height; y++) {
@@ -157,6 +170,7 @@ let board = {
       this.revealTile(pos[0],pos[1]);
     });
   },
+  //check if all mines are revealed (win) or if player fell on a mine (lose)
   winLoseCondition(x,y){
     if(this.array[y][x] == "m" && gameOver == false){
       gameOver = true;
@@ -207,6 +221,7 @@ let animations = {
       };
     });
   },
+  //returns an array with only the tiles inside the board
   valids(...arr){
     let inRange = [];
     arr.forEach(a => {
@@ -216,6 +231,7 @@ let animations = {
     });
     return inRange;
   },
+  //animation for tiles in a 5 tiles range when the player loses
   shockwave(x,y){
     document.querySelectorAll(".revealed").forEach(t => {
       if(t.className.includes("revealed")){
@@ -252,7 +268,7 @@ let animations = {
       });
     }, 400);
   },
-
+  //shakes the board once a mine explodes
   screenShake(){
     let target = document.querySelector(".play-area");
     let slowDown = 10; //number of shakes
@@ -303,7 +319,7 @@ let interface = {
     close: document.querySelectorAll(".prompt-button-close"),
     ok: document.querySelector(".prompt-button-ok"),
   },
-  
+  //listeners for buttons in the interface  
   addInterfaceListeners(){
     this.buttons.close.forEach(btn => {//cancel-close buttons
       btn.addEventListener("click", () => {
@@ -351,6 +367,7 @@ let interface = {
       parseInt(this.prompt.options.mines.value);
     });
   },
+  //listeners to detect mouse dragging and disable context menu
   addWindowListeners(){
     window.addEventListener("mousedown", () => {
       clickDown = true;
@@ -367,6 +384,7 @@ let interface = {
     });
     window.addEventListener("contextmenu", e => e.preventDefault());
   },
+  //default values for settings (width, height, number of mines)
   setDefaultValues(){
     this.prompt.options.widthDisplay.innerText =
     this.prompt.options.width.value =
@@ -378,7 +396,7 @@ let interface = {
     this.prompt.options.mines.value =
     board.mines;
   },
-  
+  //prevent placing more mines than tiles, first revealed tile won't be mined  
   limitMaxMines(){
     let max = board.width*board.height;
     this.prompt.options.minesDisplay.innerText =
@@ -390,7 +408,7 @@ let interface = {
       max-1;
     };
   },
-  
+  //hide everything in the prompt, except what is specified
   showPrompt(arr){
     this.prompt.fullScreenContainer.classList.remove("hidden");
     let options = document.querySelector(".options");
@@ -436,6 +454,7 @@ let audio = {
   },
 };
 
+//initial configs to start the game on page load
 board.newGame();
 interface.addInterfaceListeners();
 interface.addWindowListeners();
