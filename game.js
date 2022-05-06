@@ -308,10 +308,8 @@ let interface = {
       let text = this.prompt.title.innerText;
       if(text == "Options" || text == "You win" || text == "You lose"){
         board.newGame();
-        this.showPrompt("hidden");
-      } else {
-        this.showPrompt("hidden");
       }
+      this.showPrompt("hidden");
     });
     this.buttons.menu.addEventListener("click", () => { //burger button
       this.dropDown.menu.classList.toggle("hidden-dropdown");
