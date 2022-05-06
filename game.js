@@ -1,4 +1,5 @@
 let gameOver = false;
+let firstMine = [];
 
 let board = {
   dom: document.querySelector(".board"),
@@ -9,12 +10,16 @@ let board = {
   array: [], //each array inside: [Y position, X position]
   newGame(){
     gameOver = false;
+    firstMine = [];
     this.remaining = this.width*this.height-this.mines;
     this.arrayBoard();
-    this.placeMines();
     this.drawBoard();
   },
   clickAction(x,y){
+    if(firstMine.length == 0){
+      firstMine = [x,y];
+      this.placeMines();
+    };
     this.revealTile(x,y);
     this.revealConnected(x,y);
     this.winLoseCondition(x,y);
@@ -59,7 +64,7 @@ let board = {
       do {
         x = this.rand(this.width);
         y = this.rand(this.height);
-      } while(this.array[y][x] == "m");
+      } while(this.array[y][x] == "m" || [x,y].toString() == firstMine.toString());
       this.array[y][x] = "m";
       this.surroundingTiles(x,y).forEach( t => this.array[t[1]][t[0]] += 1);
     };
