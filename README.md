@@ -215,3 +215,8 @@ As an extra, there was a wrong DOM value being modified in the options menu, tha
 I think it's time to do something with those displays and the face in the center, these are still placeholders. Also the game still have no flags, it's harder to play without those.
 
 There's a lot of work to do to finish this project, I don't want to move to another personal project until this one is done.
+
+# update 15
+I noticed something while playing the game: if the mine count is too high, is really easy to fall in a mine while revealing the first tile, making it very hard to start playing. Now the mines are placed after the first click, avoiding the first revealed tile. Because of this, I also limited the max number of mines to `board.width*board.height-1` or the game will fall on an infinite loop with max mines. Also because of this, now the max number of mines will always be a win, I should remember to mock the player for doing this.
+
+![gif](./media/READMEmd/progress13.gif)
