@@ -1,5 +1,7 @@
 let gameOver = false;
 let firstMine = [];
+let clickDown = false;
+let mouseDrag = false;
 
 let board = {
   dom: document.querySelector(".board"),
@@ -15,7 +17,7 @@ let board = {
     this.arrayBoard();
     this.drawBoard();
   },
-  clickAction(x,y){
+  leftClickAction(x,y){
     if(firstMine.length == 0){
       firstMine = [x,y];
       this.placeMines();
@@ -44,9 +46,13 @@ let board = {
         tile.setAttribute("x", x);
         tile.setAttribute("y", y);
 
-        tile.addEventListener("click", () => {
+        tile.addEventListener("mouseup", (click) => {
           if(!gameOver && !this.tileDom(x,y).className.includes("revealed")){
-            this.clickAction(x,y);
+            if(click.button == 0){ //left click
+              this.leftClickAction(x,y);
+            }else if(click.button == 2){ //right click
+              console.log("test");
+            };
           };
         });
 
@@ -298,7 +304,7 @@ let interface = {
     ok: document.querySelector(".prompt-button-ok"),
   },
   
-  addListeners(){
+  addInterfaceListeners(){
     this.buttons.close.forEach(btn => {//cancel-close buttons
       btn.addEventListener("click", () => {
         this.prompt.fullScreenContainer.classList.toggle("hidden");
@@ -344,6 +350,33 @@ let interface = {
       this.prompt.options.minesDisplay.innerText =
       parseInt(this.prompt.options.mines.value);
     });
+  },
+  addWindowListeners(){
+    window.addEventListener("mousedown", () => {
+      clickDown = true;
+    });
+    window.addEventListener("mouseup", () => {
+      clickDown = false;
+    });
+    window.addEventListener("mousemove", () => {
+      if(clickDown == true){
+        mouseDrag = true;
+      }else{
+        mouseDrag = false;
+      }
+    });
+    window.addEventListener("contextmenu", e => e.preventDefault());
+  },
+  setDefaultValues(){
+    this.prompt.options.widthDisplay.innerText =
+    this.prompt.options.width.value =
+    board.width;
+    this.prompt.options.heightDisplay.innerText =
+    this.prompt.options.height.value =
+    board.height;
+    this.prompt.options.minesDisplay.innerText =
+    this.prompt.options.mines.value =
+    board.mines;
   },
   
   limitMaxMines(){
@@ -404,16 +437,9 @@ let audio = {
 };
 
 board.newGame();
-interface.addListeners();
-//default settings
-interface.prompt.options.widthDisplay.innerText =
-interface.prompt.options.width.value =
-board.width;
-interface.prompt.options.heightDisplay.innerText =
-interface.prompt.options.height.value =
-board.height;
-interface.prompt.options.minesDisplay.innerText =
-interface.prompt.options.mines.value =
-board.mines;
+interface.addInterfaceListeners();
+interface.addWindowListeners();
+interface.setDefaultValues();
+
 // console.table(board.array); //for debugging
 // board.revealMines()  //for debugging
