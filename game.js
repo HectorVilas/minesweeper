@@ -332,28 +332,31 @@ let interface = {
     this.prompt.options.width.addEventListener("input", () => {
       board.width =
       this.prompt.options.widthDisplay.innerText =
-      this.prompt.options.width.value;
+      parseInt(this.prompt.options.width.value);
       this.limitMaxMines();
     });
     this.prompt.options.height.addEventListener("input", () => {
       board.height =
       this.prompt.options.heightDisplay.innerText =
-      this.prompt.options.height.value;
+      parseInt(this.prompt.options.height.value);
       this.limitMaxMines();
     });
     this.prompt.options.mines.addEventListener("input", () => {
       board.mines =
       this.prompt.options.minesDisplay.innerText =
-      this.prompt.options.mines.value;
+      parseInt(this.prompt.options.mines.value);
     });
   },
   
   limitMaxMines(){
-    this.prompt.options.mines.max = board.width*board.height;
-    if(board.width*board.height < board.mines){
+    let max = board.width*board.height;
+    this.prompt.options.minesDisplay.innerText =
+    this.prompt.options.mines.max = max-1;
+    if(max < board.mines){
       board.mines =
       this.prompt.options.minesDisplay.innerText =
-      board.width*board.height;
+      this.prompt.options.mines.max =
+      max-1;
     };
   },
   
