@@ -215,30 +215,31 @@ let board = {
 
 let animations = {
   tileExploding(x,y){
-    let boom = board.tileDom(x,y);
-
-    boom.classList.add("boom1");
-    boom.addEventListener("transitionend", (e) => {
-      if(e.propertyName == "scale") {
-        boom.classList.remove("boom1");
-        boom.classList.add("boom2");
-        boom.addEventListener("transitionend", (e) => {
-          boom.classList.remove("boom2");
-          boom.classList.add("boom3");
+    setTimeout(() => {
+      let boom = board.tileDom(x,y);
+      boom.classList.add("boom1");
+      boom.addEventListener("transitionend", (e) => {
+        if(e.propertyName == "scale") {
+          boom.classList.remove("boom1");
+          boom.classList.add("boom2");
           boom.addEventListener("transitionend", (e) => {
-            boom.classList.remove("boom3");
-            boom.classList.add("boom4");
+            boom.classList.remove("boom2");
+            boom.classList.add("boom3");
             boom.addEventListener("transitionend", (e) => {
-              boom.classList.remove("boom4");
-              boom.classList.add("boom5");
+              boom.classList.remove("boom3");
+              boom.classList.add("boom4");
               boom.addEventListener("transitionend", (e) => {
-                boom.classList.remove("boom5");
+                boom.classList.remove("boom4");
+                boom.classList.add("boom5");
+                boom.addEventListener("transitionend", (e) => {
+                  boom.classList.remove("boom5");
+                });
               });
             });
           });
-        });
-      };
-    });
+        };
+      });
+    }, 100);
   },
   //returns an array with only the tiles inside the board
   valids(...arr){
@@ -260,9 +261,9 @@ let animations = {
     });
 
     this.tileExploding(x,y);
-    audio.playSound("explosion");
     board.tileDom(x,y).classList.add("z9");
     setTimeout(() => {
+      audio.playSound("explosion");
       this.valids([x-1,y-1],[x,y-1],[x+1,y-1],[x-1,y],[x+1,y],[x+1,y+1],[x,y+1],[x-1,y+1]).forEach(t =>{
         this.tileExploding(t[0],t[1]);
         board.tileDom(t[0],t[1]).classList.add("z8");
@@ -292,12 +293,7 @@ let animations = {
     let target = document.querySelector(".play-area");
     let slowDown = 10; //number of shakes
     let timeOut = 100;
-    let x = board.rand(slowDown*2);
-    let y = board.rand(slowDown*2);
-    //firsh shake without delay
-    target.style.transition = `ease-out ${timeOut*(slowDown+1)}ms`;
-    target.style.marginLeft = `${x}px`;
-    target.style.marginTop = `${y}px`;
+    let x, y;
     for(let i = slowDown; i > 0; i--){
       setTimeout(() => {
         target.style.transition = `ease-in-out ${timeOut}ms`;
