@@ -65,7 +65,7 @@ let board = {
             board.tileDom(x,y).classList.add("active");
             e.preventDefault();
           }else if (e.button == 2){
-            console.log("must toggle flag");
+            this.placeFlag(x,y);
           };
         });
         tile.addEventListener("mouseenter", (e) => {
@@ -99,6 +99,15 @@ let board = {
       } while(this.array[y][x] == "m" || [x,y].toString() == firstTile.toString());
       this.array[y][x] = "m";
       this.surroundingTiles(x,y).forEach( t => this.array[t[1]][t[0]] += 1);
+    };
+  },
+  //toggle flag
+  placeFlag(x,y){
+    if(this.tileDom(x,y).className.includes("flag")){
+      this.tileDom(x,y).classList.remove("flag");
+      this.tileDom(x,y).innerHTML = "";
+    }else{
+      this.imageDom(this.tileDom(x,y), "flag");
     };
   },
   //checks if the tile coordinates are in the board and doesn't contain a mine
@@ -172,6 +181,10 @@ let board = {
     } else if(value == "m"){
       image.setAttribute("src", "./media/images/mine.png");
       tile.classList.add("mine");
+      tile.appendChild(image);
+    }else if(value == "flag"){
+      image.setAttribute("src", "./media/images/flag.png");
+      tile.classList.add("flag");
       tile.appendChild(image);
     };
   },
