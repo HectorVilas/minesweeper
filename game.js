@@ -1,6 +1,6 @@
 let gameOver = false;
-let firstMine = [];
-let clickDown = false;
+let firstTile = [];
+let leftClickDown = false;
 let mouseDrag = false;
 
 let board = {
@@ -13,15 +13,15 @@ let board = {
   //setting the starting config
   newGame(){
     gameOver = false;
-    firstMine = [];
+    firstTile = [];
     this.remaining = this.width*this.height-this.mines;
     this.arrayBoard();
     this.drawBoard();
   },
   //mine reveal on click
   leftClickAction(x,y){
-    if(firstMine.length == 0){
-      firstMine = [x,y];
+    if(firstTile.length == 0){
+      firstTile = [x,y];
       this.placeMines();
     };
     this.revealTile(x,y);
@@ -54,10 +54,30 @@ let board = {
           if(!gameOver && !this.tileDom(x,y).className.includes("revealed")){
             if(click.button == 0){ //left click
               this.leftClickAction(x,y);
-            }else if(click.button == 2){ //right click
-              console.log("test");
+            // }else if(click.button == 2){ //right click
             };
           };
+          board.tileDom(x,y).classList.remove("active");
+          board.tileDom(x,y).classList.remove("hover");
+        });
+        tile.addEventListener("mousedown", (e) => {
+          if(e.button == 0){
+            board.tileDom(x,y).classList.add("active");
+            e.preventDefault();
+          }else if (e.button == 2){
+            console.log("must toggle flag");
+          };
+        });
+        tile.addEventListener("mouseenter", (e) => {
+          if(leftClickDown && e.button == 0){
+            board.tileDom(x,y).classList.add("active");
+          } else {
+            board.tileDom(x,y).classList.add("hover");
+          };
+        });
+        tile.addEventListener("mouseleave", () => {
+          board.tileDom(x,y).classList.remove("active");
+          board.tileDom(x,y).classList.remove("hover");
         });
 
         row.append(tile);
@@ -76,7 +96,7 @@ let board = {
       do {
         x = this.rand(this.width);
         y = this.rand(this.height);
-      } while(this.array[y][x] == "m" || [x,y].toString() == firstMine.toString());
+      } while(this.array[y][x] == "m" || [x,y].toString() == firstTile.toString());
       this.array[y][x] = "m";
       this.surroundingTiles(x,y).forEach( t => this.array[t[1]][t[0]] += 1);
     };
@@ -149,7 +169,6 @@ let board = {
     if(typeof(value) == "number" && value !== 0){
       image.setAttribute("src", `./media/images/n${value}.png`);
       tile.appendChild(image);
-      return image;
     } else if(value == "m"){
       image.setAttribute("src", "./media/images/mine.png");
       tile.classList.add("mine");
@@ -369,14 +388,16 @@ let interface = {
   },
   //listeners to detect mouse dragging and disable context menu
   addWindowListeners(){
-    window.addEventListener("mousedown", () => {
-      clickDown = true;
+    window.addEventListener("mousedown", (e) => {
+      if(e.button == 0){
+        leftClickDown = true;
+      };
     });
     window.addEventListener("mouseup", () => {
-      clickDown = false;
+      leftClickDown = false;
     });
     window.addEventListener("mousemove", () => {
-      if(clickDown == true){
+      if(leftClickDown == true){
         mouseDrag = true;
       }else{
         mouseDrag = false;

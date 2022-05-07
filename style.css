@@ -93,9 +93,9 @@ p {
   border: 4px outset #fff;
   background-color: #ddd;
   justify-content: center;
-}.tile:hover {
+}.tile.hover {
   background-color: #eee;
-}.tile:active {
+}.tile.active {
   background-color: #ccc;
   border-style: inset;
 }.tile.revealed {
