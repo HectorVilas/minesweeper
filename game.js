@@ -106,7 +106,7 @@ let board = {
     if(this.tileDom(x,y).className.includes("flag")){
       this.tileDom(x,y).classList.remove("flag");
       this.tileDom(x,y).innerHTML = "";
-    }else{
+    }else if(!this.tileDom(x,y).className.includes("revealed")){
       this.imageDom(this.tileDom(x,y), "flag");
     };
   },
