@@ -220,3 +220,18 @@ There's a lot of work to do to finish this project, I don't want to move to anot
 I noticed something while playing the game: if the mine count is too high, is really easy to fall in a mine while revealing the first tile, making it very hard to start playing. Now the mines are placed after the first click, avoiding the first revealed tile. Because of this, I also limited the max number of mines to `board.width*board.height-1` or the game will fall on an infinite loop with max mines. Also because of this, now the max number of mines will always be a win, I should remember to mock the player for doing this.
 
 ![gif](./media/READMEmd/progress13.gif)
+(I removed the red background for the mines to prevent flashing lights in the gif)
+
+# update 16
+I've been working a little to prepare things to allow placing flags with the right click. Turns out it's not as simple as I thought. I wrote some basic stuff to check if the mouse is being dragged, because now I want the hovered tiles to look pressed while mouse dragging, and reveal the tile when the click is released.
+
+I've also been commenting on the functions, in case I forget what those do in the future.
+
+# update 17
+And done, now the buttons will look like pushed if the left click is hold down and the cursor moved over the buttons.
+
+![gif](./media/READMEmd/progress14.gif)
+
+Will happen only with the left button, the flags will be placed in `mousedown`, not `mouseup`, like in the original game (I think). So everything is now ready to start coding the flags! I'm not sure if I should make another "array board" to store it's positions, or just a 1D array with X and Y positions for each flag.
+
+> And here is another confession: I never played Minesweeper when I had it on the OS. I knew the rules, but was never into it. I started liking the game while coding this from scratch, this game is fun!
