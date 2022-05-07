@@ -200,7 +200,7 @@ let board = {
         setTimeout(() => {
           interface.showPrompt("lose");
         }, 1000);
-      }, 2500);
+      }, 3000);
     } else if(this.remaining <= 0 && gameOver == false){
       gameOver = true;
       setTimeout(() => {
@@ -214,28 +214,36 @@ let board = {
 };
 
 let animations = {
-  tileExploding(x,y){
+  tileExploding(x, y) {
     setTimeout(() => {
-      let boom = board.tileDom(x,y);
+      let boom = board.tileDom(x, y);
       boom.classList.add("boom1");
       boom.addEventListener("transitionend", (e) => {
-        if(e.propertyName == "scale") {
+        if (e.propertyName == "scale") {
           boom.classList.remove("boom1");
           boom.classList.add("boom2");
           boom.addEventListener("transitionend", (e) => {
-            boom.classList.remove("boom2");
-            boom.classList.add("boom3");
-            boom.addEventListener("transitionend", (e) => {
-              boom.classList.remove("boom3");
-              boom.classList.add("boom4");
+            if (e.propertyName == "scale") {
+              boom.classList.remove("boom2");
+              boom.classList.add("boom3");
               boom.addEventListener("transitionend", (e) => {
-                boom.classList.remove("boom4");
-                boom.classList.add("boom5");
-                boom.addEventListener("transitionend", (e) => {
-                  boom.classList.remove("boom5");
-                });
+                if (e.propertyName == "scale") {
+                  boom.classList.remove("boom3");
+                  boom.classList.add("boom4");
+                  boom.addEventListener("transitionend", (e) => {
+                    if (e.propertyName == "scale") {
+                      boom.classList.remove("boom4");
+                      boom.classList.add("boom5");
+                      boom.addEventListener("transitionend", (e) => {
+                        if (e.propertyName == "scale") {
+                          boom.classList.remove("boom5");
+                        };
+                      });
+                    };
+                  });
+                };
               });
-            });
+            };
           });
         };
       });
