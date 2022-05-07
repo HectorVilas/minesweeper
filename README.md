@@ -235,3 +235,7 @@ And done, now the buttons will look like pushed if the left click is hold down a
 Will happen only with the left button, the flags will be placed in `mousedown`, not `mouseup`, like in the original game (I think). So everything is now ready to start coding the flags! I'm not sure if I should make another "array board" to store it's positions, or just a 1D array with X and Y positions for each flag.
 
 > And here is another confession: I never played Minesweeper when I had it on the OS. I knew the rules, but was never into it. I started liking the game while coding this from scratch, this game is fun!
+
+**note:** now the player can place or remove flags with right mouse click. Once the tile is revealed, the flag will be removed (this was unintentional, another happy little accident). There's no code to limit the number of flags yet, but just having it will make the game more playable than before.
+
+![gif](./media/READMEmd/progress15.gif)
