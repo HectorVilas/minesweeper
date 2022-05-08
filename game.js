@@ -8,16 +8,14 @@ let board = {
   width: 30,
   height: 15,
   mines: 30,
-  flags: 30,
   time: 0,
   remaining: undefined,
   array: [], //each array inside: [Y position, X position]
   //setting the starting config
   newGame(){
-    interface.boardTop.mines.innerText = board.flags;
+    interface.boardTop.mines.innerText = this.mines;
     gameOver = false;
     firstTile = [];
-    this.flags = this.mines;
     this.remaining = this.width*this.height-this.mines;
     this.arrayBoard();
     this.drawBoard();
@@ -110,12 +108,11 @@ let board = {
     if(this.tileDom(x,y).className.includes("flag")){
       this.tileDom(x,y).classList.remove("flag");
       this.tileDom(x,y).innerHTML = "";
-      this.flags++;
-      interface.boardTop.mines.innerText = this.flags;
-    }else if(!this.tileDom(x,y).className.includes("revealed") && board.flags > 0){
+      interface.updateMinesCount();
+      // interface.boardTop.mines.innerText = this.flags;
+    }else if(!this.tileDom(x,y).className.includes("revealed") && parseInt(interface.boardTop.mines.innerText) > 0){
       this.imageDom(this.tileDom(x,y), "flag");
-      this.flags--;
-      interface.boardTop.mines.innerText = this.flags;
+      interface.updateMinesCount();
     };
   },
   //checks if the tile coordinates are in the board and doesn't contain a mine
@@ -140,10 +137,12 @@ let board = {
     let thisTile = this.tileDom(x,y);
     let thisArr = this.array[y][x];
     thisTile.classList.add("revealed");
+    thisTile.classList.remove("flag");
     this.imageDom(thisTile,thisArr);
     if(thisArr != "m"){
       this.remaining--;
-    }
+    };
+    interface.updateMinesCount();
   },
   //recursive surrounding tiles reveal, also reduces remaining for each
   revealConnected(x,y){
@@ -157,6 +156,8 @@ let board = {
           let thisTile = this.tileDom(t[0],t[1]);
           if(!thisTile.className.includes("revealed")){
             thisTile.classList.add("revealed");
+            thisTile.classList.remove("flag");
+
             this.imageDom(thisTile, this.array[t[1]][t[0]]);
             this.remaining--;
           };
@@ -173,6 +174,7 @@ let board = {
     if(surrounding.length == 0){
       this.winLoseCondition(x,y);
     };
+    interface.updateMinesCount();
   },
   //short way to point to a specific tile in the DOM
   tileDom(x,y){
@@ -412,7 +414,6 @@ let interface = {
     });
     this.prompt.options.mines.addEventListener("input", () => {
       board.mines =
-      board.flags =
       this.prompt.options.minesDisplay.innerText =
       parseInt(this.prompt.options.mines.value);
     });
@@ -455,7 +456,6 @@ let interface = {
     this.prompt.options.mines.max = max-1;
     if(max < board.mines){
       board.mines =
-      board.flags =
       this.prompt.options.minesDisplay.innerText =
       this.prompt.options.mines.max =
       max-1;
@@ -492,6 +492,13 @@ let interface = {
     }else{
       alert(arr+" is not a valid parameter");
     }
+  },
+  //updates the remaining mines substracting the total of flags on screen
+  updateMinesCount(){
+    if(!gameOver){
+      let flagsCount = document.querySelectorAll(".flag").length;
+      this.boardTop.mines.innerText = board.mines - flagsCount;
+    };
   },
 };
 
