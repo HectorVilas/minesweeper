@@ -239,3 +239,18 @@ Will happen only with the left button, the flags will be placed in `mousedown`, 
 **note:** now the player can place or remove flags with right mouse click. Once the tile is revealed, the flag will be removed (this was unintentional, another happy little accident). There's no code to limit the number of flags yet, but just having it will make the game more playable than before.
 
 ![gif](./media/READMEmd/progress15.gif)
+
+# update 18
+Now the mines count on screen will show the remaining mines. Each time the player places a flag, the counter will go down by one. If the counter is at zero, no more flags can be placed until a flag is removed.
+
+When the board reveals the connected empty tiles, if there's a flag, it will be removed and the counter will go up by one for each flag.
+
+About the last part, I wasn't sure if I should reveal empty tiles containing a flag or just ignore during the propagation and let the player guess if the flag is in the right position. I decided to go for the former.
+
+Something to note, this is how I count the flags:
+```javascript
+let flagsCount = document.querySelectorAll(".flag").length;
+display.boardTop.mines.innerText = board.mines - flagsCount;
+```
+
+My first approach was adding or removing one in a variable, but then there was a lot of ways something can go wrong, so I decided to cut some corners and just count the tiles containing the class "flag" using `querySelectorAll`. This is way easier and maybe only possible with `HTML`+`JS`, but I'm not sure how CPU intensive is this action. Another thought is, in case I want to write the same in the future, in another language, my first approach was surely the best one.
