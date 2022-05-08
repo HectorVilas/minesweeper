@@ -8,12 +8,16 @@ let board = {
   width: 30,
   height: 15,
   mines: 30,
+  flags: 30,
+  time: 0,
   remaining: undefined,
   array: [], //each array inside: [Y position, X position]
   //setting the starting config
   newGame(){
+    interface.boardTop.mines.innerText = board.flags;
     gameOver = false;
     firstTile = [];
+    this.flags = this.mines;
     this.remaining = this.width*this.height-this.mines;
     this.arrayBoard();
     this.drawBoard();
@@ -38,7 +42,7 @@ let board = {
       };
     };
   },
-  //draws the array board on screen with divs
+  //draws the array board on screen with divs, apply listeners
   drawBoard(){
     this.dom.innerHTML = "";
     for (let y = 0; y < this.height; y++) {
@@ -64,8 +68,8 @@ let board = {
           if(e.button == 0){
             board.tileDom(x,y).classList.add("active");
             e.preventDefault();
-          }else if (e.button == 2){
-            this.placeFlag(x,y);
+          }else if (e.button == 2 && !gameOver){
+            this.toggleFlag(x,y);
           };
         });
         tile.addEventListener("mouseenter", (e) => {
@@ -101,13 +105,17 @@ let board = {
       this.surroundingTiles(x,y).forEach( t => this.array[t[1]][t[0]] += 1);
     };
   },
-  //toggle flag
-  placeFlag(x,y){
+  //places or removes a flag
+  toggleFlag(x,y){
     if(this.tileDom(x,y).className.includes("flag")){
       this.tileDom(x,y).classList.remove("flag");
       this.tileDom(x,y).innerHTML = "";
-    }else if(!this.tileDom(x,y).className.includes("revealed")){
+      this.flags++;
+      interface.boardTop.mines.innerText = this.flags;
+    }else if(!this.tileDom(x,y).className.includes("revealed") && board.flags > 0){
       this.imageDom(this.tileDom(x,y), "flag");
+      this.flags--;
+      interface.boardTop.mines.innerText = this.flags;
     };
   },
   //checks if the tile coordinates are in the board and doesn't contain a mine
@@ -355,6 +363,11 @@ let interface = {
     close: document.querySelectorAll(".prompt-button-close"),
     ok: document.querySelector(".prompt-button-ok"),
   },
+  boardTop: {
+    mines: document.querySelector(".mines-remaining"),
+    face: document.querySelector(".face"),
+    time: document.querySelector(".elapsed-time"),
+  },
   //listeners for buttons in the interface  
   addInterfaceListeners(){
     this.buttons.close.forEach(btn => {//cancel-close buttons
@@ -399,6 +412,7 @@ let interface = {
     });
     this.prompt.options.mines.addEventListener("input", () => {
       board.mines =
+      board.flags =
       this.prompt.options.minesDisplay.innerText =
       parseInt(this.prompt.options.mines.value);
     });
@@ -441,6 +455,7 @@ let interface = {
     this.prompt.options.mines.max = max-1;
     if(max < board.mines){
       board.mines =
+      board.flags =
       this.prompt.options.minesDisplay.innerText =
       this.prompt.options.mines.max =
       max-1;
