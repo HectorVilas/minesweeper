@@ -15,10 +15,10 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 ### things to display on screen:
 - ✅ the board
 - ❌ counters
-- - ❌ remaining mines
+- - ✅ remaining mines
 - - ❌ time played
 - ❌ classic smiley face
-- ❌ menu buttons
+- ✅ menu buttons
 
 ### game options and buttons:
 - ❌ how to play
@@ -45,10 +45,10 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 - - ✅ else, show the number of mines surrounding the tile
 - - - ✅ if there's no mines, nothing will be shown
 - - - ✅ the surrounding tiles will auto-reveal until there's a mine around
-- ❌ right click must add a flag to mark a mine
-- - ❌ every flag must reduce the mine counter by one
-- - ❌ player can't put more flag than the number of mines
-- - ❌ in case of a present flag, it will be removed
+- ✅ right click must add a flag to mark a mine
+- - ✅ every flag must reduce the mine counter by one
+- - ✅ player can't put more flag than the number of mines
+- - ✅ in case of a present flag, it will be removed
 - ✅ when all mines has been discovered and tiles without mines revealed
 - - ✅ the game ends, announcing it
 - - ❌ remaining flags will be placed over the mines
