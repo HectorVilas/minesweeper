@@ -13,6 +13,7 @@ let board = {
   array: [], //each array inside: [Y position, X position]
   //setting the starting config
   newGame(){
+    this.face(1);
     interface.boardTop.mines.innerText = this.mines;
     gameOver = false;
     firstTile = [];
@@ -59,7 +60,6 @@ let board = {
           if(!gameOver && !this.tileDom(x,y).className.includes("revealed")){
             if(click.button == 0){ //left click
               this.leftClickAction(x,y);
-            // }else if(click.button == 2){ //right click
             };
           };
           board.tileDom(x,y).classList.remove("active");
@@ -67,6 +67,9 @@ let board = {
         });
         tile.addEventListener("mousedown", (e) => {
           if(e.button == 0){
+            if(!gameOver){
+              this.face(2);
+            };
             board.tileDom(x,y).classList.add("active");
             e.preventDefault();
           }else if (e.button == 2 && !gameOver){
@@ -74,6 +77,7 @@ let board = {
           };
         });
         tile.addEventListener("mouseenter", (e) => {
+          e.stopPropagation();
           if(leftClickDown && e.button == 0){
             board.tileDom(x,y).classList.add("active");
           } else {
@@ -218,16 +222,22 @@ let board = {
   winLoseCondition(x,y){
     if(this.array[y][x] == "m" && gameOver == false){
       gameOver = true;
+      this.face(3);
       animations.shockwave(x,y);
       animations.screenShake();
       setTimeout(() => {
-        this.revealMines();
+        if(gameOver){
+          this.revealMines();
+        };
         setTimeout(() => {
-          interface.showPrompt("lose");
+          if(gameOver){
+            interface.showPrompt("lose");
+          };
         }, 1000);
       }, 3000);
     } else if(this.remaining <= 0 && gameOver == false){
       gameOver = true;
+      this.face(4);
       setTimeout(() => {
         this.revealMines();
         setTimeout(() => {
@@ -235,6 +245,10 @@ let board = {
         }, 500);
       }, 500);
     };
+  },
+  face(num){
+    let image = document.querySelector(".face");
+    image.src = `./media/images/face0${num}.png`;
   },
 };
 
@@ -342,6 +356,7 @@ let animations = {
 };
 
 let interface = {
+  content: document.querySelector(".content"),
   prompt: {
     fullScreenContainer: document.querySelector(".full-screen-container"),
     title: document.querySelector(".prompt-title-text"),
@@ -374,6 +389,16 @@ let interface = {
   },
   //listeners for buttons in the interface  
   addInterfaceListeners(){
+    // let playArea = document.querySelector(".play-area");
+    // playArea.addEventListener("mouseenter", (e) => {
+      // e.stopPropagation();
+    // });
+    this.boardTop.face.addEventListener("click", () => {
+        board.newGame();
+    });
+    // this.content.addEventListener("mouseenter", () => {
+    //   console.log(1);
+    // });
     this.buttons.close.forEach(btn => {//cancel-close buttons
       btn.addEventListener("click", () => {
         this.prompt.fullScreenContainer.classList.toggle("hidden");
@@ -428,6 +453,9 @@ let interface = {
       };
     });
     window.addEventListener("mouseup", () => {
+      if(!gameOver){
+        board.face(1);
+      };
       leftClickDown = false;
     });
     window.addEventListener("mousemove", () => {
