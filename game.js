@@ -152,6 +152,7 @@ let board = {
   },
   //recursive surrounding tiles reveal, also reduces remaining for each
   revealConnected(x,y){
+    
     let surrounding = [];
     if(this.array[y][x] == 0){
       surrounding = this.surroundingTiles(x,y)
@@ -175,7 +176,9 @@ let board = {
       };
 
       setTimeout(() => {
-      surrounding.forEach(t => this.revealConnected(t[0],t[1]))
+        if(firstTile.length > 0){
+          surrounding.forEach(t => this.revealConnected(t[0],t[1]))
+        };
     }, 20);
     if(surrounding.length == 0){
       this.winLoseCondition(x,y);
