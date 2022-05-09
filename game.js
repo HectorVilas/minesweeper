@@ -23,7 +23,10 @@ let board = {
   //mine reveal on click
   leftClickAction(x,y){
     if(firstTile.length == 0){
-      firstTile = [x,y];
+      firstTile.push([x,y].toString());
+      if(this.width*this.height-9 >= this.mines){
+        this.surroundingTiles(x,y).forEach(t => firstTile.push(t.toString()))
+      }
       this.placeMines();
     };
     this.revealTile(x,y);
@@ -98,7 +101,7 @@ let board = {
       do {
         x = this.rand(this.width);
         y = this.rand(this.height);
-      } while(this.array[y][x] == "m" || [x,y].toString() == firstTile.toString());
+      } while(this.array[y][x] == "m" || firstTile.includes([x,y].toString()));
       this.array[y][x] = "m";
       this.surroundingTiles(x,y).forEach( t => this.array[t[1]][t[0]] += 1);
     };
@@ -109,7 +112,6 @@ let board = {
       this.tileDom(x,y).classList.remove("flag");
       this.tileDom(x,y).innerHTML = "";
       interface.updateMinesCount();
-      // interface.boardTop.mines.innerText = this.flags;
     }else if(!this.tileDom(x,y).className.includes("revealed") && parseInt(interface.boardTop.mines.innerText) > 0){
       this.imageDom(this.tileDom(x,y), "flag");
       interface.updateMinesCount();
