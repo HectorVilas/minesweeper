@@ -254,3 +254,6 @@ display.boardTop.mines.innerText = board.mines - flagsCount;
 ```
 
 My first approach was adding or removing one in a variable, but then there was a lot of ways something can go wrong, so I decided to cut some corners and just count the tiles containing the class "flag" using `querySelectorAll`. This is way easier and maybe only possible with `HTML`+`JS`, but I'm not sure how CPU intensive is this action. Another thought is, in case I want to write the same in the future, in another language, my first approach was surely the best one.
+
+# update 19
+I've been reading the game rules on Wikipedia, and the original Minesweeper not only won't place a mine in the first revealed tile, but does the same for the surrounding tiles, so I made it possible to not have mines around the first revealed tile if `board.width*board.height-9 >= board.mines`.
