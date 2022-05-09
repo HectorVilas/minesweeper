@@ -214,6 +214,11 @@ header {
   padding: 2px 7px;
 }
 
+.face {
+  width: 25px;
+  height: 25px;
+}
+
 
 /*prompts*/
 
