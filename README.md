@@ -257,3 +257,11 @@ My first approach was adding or removing one in a variable, but then there was a
 
 # update 19
 I've been reading the game rules on Wikipedia, and the original Minesweeper not only won't place a mine in the first revealed tile, but does the same for the surrounding tiles, so I made it possible to not have mines around the first revealed tile if `board.width*board.height-9 >= board.mines`.
+
+The face button now have images, and the face will change expresions as in the original game. The code was a little tricky because all the listeners are in the tiles, so dragging the click outside the board will get the face stuck in the surprice state. Solved this problem just adding the normal state to the window's `mouseup` listener.
+
+Also the face button now will restart the game. I had to add a few `if`s to prevent revealing the mines and opening the "game over" prompt after the `setTimeout`s end. Also had to do the same with the propagation. If the player restarts the board during the propagation, it will keep propagating in the new board. `!gameOver` on `if` wasn't a solution, so I used the `firstTile`'s length to know if the game has been restarted, because it will be empty until the first tile is revealed.
+
+![gif](./media/READMEmd/progress16.gif)
+
+Maybe I should get rid of the "you win"/"you lose" prompt, because the face with sunglasses or "X" for eyes will tell the player about it.
