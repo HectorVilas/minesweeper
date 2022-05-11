@@ -244,7 +244,9 @@ let board = {
       setTimeout(() => {
         this.revealMines();
         setTimeout(() => {
-          interface.showPrompt("win");
+          if(gameOver){
+            interface.showPrompt("win");
+          };
         }, 500);
       }, 500);
     };
