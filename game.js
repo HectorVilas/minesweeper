@@ -485,7 +485,6 @@ let interface = {
   //prevent placing more mines than tiles, first revealed tile won't be mined  
   limitMaxMines(){
     let max = board.width*board.height;
-    this.prompt.options.minesDisplay.innerText =
     this.prompt.options.mines.max = max-1;
     if(max < board.mines){
       board.mines =
