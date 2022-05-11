@@ -546,13 +546,16 @@ let interface = {
 };
 
 let audio = {
+  checkbox: document.querySelector("#sounds"),
   sonar: document.querySelector("#sonar"),
   explosion: document.querySelector("#explosion"),
   playSound(arr){
-    if(arr == "sonar"){
-      this.sonar.play()
-    } else if(arr == "explosion") {
-      this.explosion.play()
+    if(this.checkbox.checked){ 
+      if(arr == "sonar"){
+        this.sonar.play()
+      } else if(arr == "explosion") {
+        this.explosion.play()
+      }
     }
   },
 };
