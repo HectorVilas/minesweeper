@@ -265,3 +265,12 @@ Also the face button now will restart the game. I had to add a few `if`s to prev
 ![gif](./media/READMEmd/progress16.gif)
 
 Maybe I should get rid of the "you win"/"you lose" prompt, because the face with sunglasses or "X" for eyes will tell the player about it.
+
+# update 20
+Today I made a few fixes and changes:
+- the mine display in the options was alyaws changing numbers when moving the width or height sliders, instead of doing it only if the max must be reduced.
+- the win message was appearing in the next game when the player restarted the game before it showed.
+- instead of showing mines when the player wins, the board will show flags.
+- the checkbox for sounds in the options menu now works. Unchecking it will mute all sounds.
+
+> I think it's time to move on. I have to finish the game and keep going with the front end course. Right now I can start other fun projects, but I'm limited to simple board games.
