@@ -1,4 +1,5 @@
 let gameOver = false;
+let playerWins = undefined;
 let firstTile = [];
 let leftClickDown = false;
 let mouseDrag = false;
@@ -16,6 +17,7 @@ let board = {
     this.face(1);
     interface.boardTop.mines.innerText = this.mines;
     gameOver = false;
+    playerWins = undefined;
     firstTile = [];
     this.remaining = this.width*this.height-this.mines;
     this.arrayBoard();
@@ -198,8 +200,13 @@ let board = {
       image.setAttribute("src", `./media/images/n${value}.png`);
       tile.appendChild(image);
     } else if(value == "m"){
-      image.setAttribute("src", "./media/images/mine.png");
-      tile.classList.add("mine");
+      if(playerWins){
+        image.setAttribute("src", "./media/images/flag.png");
+        tile.classList.add("revealed");
+      } else {
+        image.setAttribute("src", "./media/images/mine.png");
+        tile.classList.add("mine");
+      };
       tile.appendChild(image);
     }else if(value == "flag"){
       image.setAttribute("src", "./media/images/flag.png");
@@ -225,6 +232,7 @@ let board = {
   winLoseCondition(x,y){
     if(this.array[y][x] == "m" && gameOver == false){
       gameOver = true;
+      playerWins = false;
       this.face(3);
       animations.shockwave(x,y);
       animations.screenShake();
@@ -241,6 +249,7 @@ let board = {
     } else if(this.remaining <= 0 && gameOver == false){
       gameOver = true;
       this.face(4);
+      playerWins = true;
       setTimeout(() => {
         this.revealMines();
         setTimeout(() => {
