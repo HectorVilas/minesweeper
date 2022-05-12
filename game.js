@@ -3,6 +3,7 @@ let playerWins = undefined;
 let firstTile = [];
 let leftClickDown = false;
 let mouseDrag = false;
+let secondsCount = undefined;
 
 let board = {
   dom: document.querySelector(".board"),
@@ -19,6 +20,7 @@ let board = {
     gameOver = false;
     playerWins = undefined;
     firstTile = [];
+    this.timer("clear");
     this.remaining = this.width*this.height-this.mines;
     this.arrayBoard();
     this.drawBoard();
@@ -26,6 +28,7 @@ let board = {
   //mine reveal on click
   leftClickAction(x,y){
     if(firstTile.length == 0){
+      this.timer("start");
       firstTile.push([x,y].toString());
       if(this.width*this.height-9 >= this.mines){
         this.surroundingTiles(x,y).forEach(t => firstTile.push(t.toString()))
@@ -231,6 +234,7 @@ let board = {
   //check if all mines are revealed (win) or if player fell on a mine (lose)
   winLoseCondition(x,y){
     if(this.array[y][x] == "m" && gameOver == false){
+      this.timer("stop");
       gameOver = true;
       playerWins = false;
       this.face(3);
@@ -247,6 +251,7 @@ let board = {
         }, 1000);
       }, 3000);
     } else if(this.remaining <= 0 && gameOver == false){
+      this.timer("stop");
       gameOver = true;
       this.face(4);
       playerWins = true;
@@ -260,9 +265,23 @@ let board = {
       }, 500);
     };
   },
-  face(num){
+  //changes face expresion swapping images
+    face(num){ //1: smiling; 2: surprised; 3: dead; 4: sunglasses
     let image = document.querySelector(".face");
     image.src = `./media/images/face0${num}.png`;
+  },
+  //starts, stop and clears timer on board
+  timer(arr){
+    if(arr == "start"){
+      secondsCount = setInterval(() => {
+        interface.boardTop.time.innerText++;
+      }, 1000);
+    } else if(arr == "stop") {
+      clearInterval(secondsCount);
+    } else if(arr == "clear"){
+      clearInterval(secondsCount);
+      interface.boardTop.time.innerText = 0;
+    };
   },
 };
 
