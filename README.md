@@ -14,10 +14,10 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 
 ### things to display on screen:
 - ✅ the board
-- ❌ counters
+- ✅ counters
 - - ✅ remaining mines
-- - ❌ time played
-- ❌ classic smiley face
+- - ✅ time played
+- ✅ classic smiley face
 - ✅ menu buttons
 
 ### game options and buttons:
@@ -51,8 +51,8 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 - - ✅ in case of a present flag, it will be removed
 - ✅ when all mines has been discovered and tiles without mines revealed
 - - ✅ the game ends, announcing it
-- - ❌ remaining flags will be placed over the mines
-- - ❌ the timer must stop
+- - ✅ remaining flags will be placed over the mines
+- - ✅ the timer must stop
 
 ### visual elements:
 #### animations:
@@ -72,7 +72,7 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 - ❌ a graphic minefield
 - ❌ non-rectangular board shapes
 - ✅ sounds
-- - ❌ sound toggle button in options
+- - ✅ sound toggle button in options
 - ❌ show the README.md in the page (may create a new repo for this)
 - ✅ replace numbers for images (preventing bad tile scaling)
 - ❌ language selector (english - spanish)
