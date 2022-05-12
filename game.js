@@ -241,11 +241,11 @@ let board = {
       animations.shockwave(x,y);
       animations.screenShake();
       setTimeout(() => {
-        if(gameOver){
+        if(playerWins !== undefined){
           this.revealMines();
         };
         setTimeout(() => {
-          if(gameOver){
+          if(playerWins !== undefined){
             interface.showPrompt("lose");
           };
         }, 1000);
@@ -258,7 +258,7 @@ let board = {
       setTimeout(() => {
         this.revealMines();
         setTimeout(() => {
-          if(gameOver){
+          if(playerWins !== undefined){
             interface.showPrompt("win");
           };
         }, 500);
