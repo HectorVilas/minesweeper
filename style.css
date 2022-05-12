@@ -1,4 +1,4 @@
-:root {
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');:root {
   --color-page-1: #5c529e;
   --color-page-2: #C3C3E5;
   --color-page-4: #F1F0FF;
@@ -14,7 +14,7 @@ body {
   height: 100vh;
   margin: 0;
   background-color: var(--color-page-1);
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Dosis', 'Times New Roman', Times, serif;
 }
 
 button {
@@ -173,7 +173,8 @@ header {
   box-shadow: 0 0 5px black;
   z-index: 98;
   height: 30px;
-  font-size: 24px;
+  font-size: 22px;
+  font-weight: 600;
 }
 
 .button-menu {
@@ -191,6 +192,8 @@ header {
   padding: 30px 0 0 0;
   transition: 200ms;
 }.dropdown-option {
+  font-family: 'Dosis', 'Times New Roman', Times, serif;
+  font-size: 18px;
   padding: 10px;
   background-color: var(--color-page-4);
   border: 1px solid var(--color-page-3);
@@ -244,6 +247,7 @@ header {
   box-shadow: 3px 3px 10px black;
 }
 .prompt-top {
+  font-weight: 600;
   padding: 2px;
   border-radius: 15px 15px 0 0;
   background-color: var(--color-page-3);
@@ -261,6 +265,7 @@ header {
   background-color: var(--color-page-4);
   padding: 15px;
   flex: 1 1 auto;
+  font-weight: 600;
 }.prompt-bottom {
   background-color: var(--color-page-4);
   margin-top: auto;
@@ -275,17 +280,19 @@ header {
 .how-to-play {
   height: 500px;
   overflow-y: auto;
-  padding: 10px;
+  padding: 20px;
   font-size: 18px;
+  color: var(--text-color-3);
 }.how-to-play>img{
-  width: 100%;
-  margin: 10px;
+  width: 90%;
+  margin: 20px 0;
 }
 
 /*prompt content*/
 
 .options{
   font-size: 20px;
+  color: var(--text-color-2);
 }
 .win-message,
 .lose-message{
