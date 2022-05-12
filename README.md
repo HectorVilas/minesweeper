@@ -272,5 +272,6 @@ Today I made a few fixes and changes:
 - the win message was appearing in the next game when the player restarted the game before it showed.
 - instead of showing mines when the player wins, the board will show flags.
 - the checkbox for sounds in the options menu now works. Unchecking it will mute all sounds.
+- the timer is now working. `setInterval` was a little confusing at first, but found the way to make it start and stop when needed.
 
 > I think it's time to move on. I have to finish the game and keep going with the front end course. Right now I can start other fun projects, but I'm limited to simple board games.
