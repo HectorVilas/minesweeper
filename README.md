@@ -21,7 +21,7 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 - ✅ menu buttons
 
 ### game options and buttons:
-- ❌ how to play
+- ✅ how to play
 - ✅ settings
 - - ✅ number of mines
 - - ✅ board size (X and Y)
@@ -65,7 +65,7 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 - ✅ "burger" button to show menu on the right of the screen
 - - ✅ sliders for board width/height and number of mines
 - - ✅ ~~folded "how to play" div with instructions~~ "how to play" option
-- - - ❌ include gifs showing how to play
+- - - ✅ include gifs showing how to play
 - - ✅ ~~folded~~ "about" div with credits for any third party media used and link to my Github profile
 
 ### other ideas:
@@ -275,3 +275,8 @@ Today I made a few fixes and changes:
 - the timer is now working. `setInterval` was a little confusing at first, but found the way to make it start and stop when needed.
 
 > I think it's time to move on. I have to finish the game and keep going with the front end course. Right now I can start other fun projects, but I'm limited to simple board games.
+
+# update 21
+I've wrote the "how to play" prompt. I also added some images and GIFs to the explanations.
+
+While playing a little to capture those images, I noticed that the method to prevent prompts opening after reseting the board won't always work, so I changed the comprobation to another variable. Now it won't show in the wrong time.
