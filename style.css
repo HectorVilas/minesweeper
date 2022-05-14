@@ -122,14 +122,15 @@ p {
 }.boom3 {
   transition: ease-in-out 400ms;
   scale: 150%;
-  box-shadow: 0 0 3px black;
+  box-shadow: 3px 3px 10px black;
 }.boom4 {
   transition: ease-in-out 600ms;
   scale: 80%;
-  box-shadow: 0 0 50px white;
+  box-shadow: 0 0 0px black;
 }.boom5 {
   transition: ease-in-out 800ms;
   scale: 100%;
+  /* box-shadow: 0 0 50px white; */
 }
 .z9 {
   z-index: 9;
