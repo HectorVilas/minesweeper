@@ -151,6 +151,21 @@ p {
   z-index: 1;
 }
 
+.game-start {
+  animation: in-out 250ms;
+}
+@keyframes in-out {
+  from {
+    scale: 100%;
+  }
+  50% {
+    scale: 0%;
+  }
+  to {
+    scale: 100%;
+  }
+}
+
 /*preventing animation inconsistency*/
 .tile.revealed-no-transition { 
   background-color: #ccc;

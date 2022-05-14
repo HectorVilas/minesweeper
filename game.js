@@ -15,6 +15,7 @@ let board = {
   array: [], //each array inside: [Y position, X position]
   //setting the starting config
   newGame(){
+    animations.boardScan();
     this.face(1);
     interface.boardTop.mines.innerText = this.mines;
     gameOver = false;
@@ -385,6 +386,23 @@ let animations = {
         slowDown--;
       }, timeOut*(i+1));
     }
+  },
+  boardScan(){
+    for(let x = 0; x < board.width; x++){
+      setTimeout(() => {
+        for(let y = 0; y < board.height; y++){
+          let tile = board.tileDom(x,y)
+          tile.classList.add("game-start");
+        };
+        if(x == board.width-1) {
+          setTimeout(() => {
+            document.querySelectorAll(".game-start").forEach(t=>{
+              t.classList.remove("game-start");
+            });
+          }, 300);
+        }
+      }, 20*x+1);
+    };
   },
 };
 
