@@ -58,7 +58,7 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 #### animations:
 - ✅ shockwave effect after revealing a mine
 - - ❌ expand the shockwave to the rest of the board
-- ❌ animation for board drawing 
+- ✅ animation for board drawing 
 #### interface
 - ✅ prompt made of divs with absolute position to show in the middle of the screen, over the board itself
 - - ✅ if player wins/loses must include "play again" and close buttons
@@ -285,3 +285,62 @@ While playing a little to capture those images, I noticed that the method to pre
 I've added a "scan" animation to the board every time the player starts a new game. I wanted to make it advance in diagonal, but I'm still not sure how to do it. Tomorrow I'll try some ways to achieve the result I want. Maybe with a double `for`.
 
 ![gif](./media/READMEmd/progress17.gif)
+
+# update 23
+I finally did it! Thinking a way to make it diagonally was really confusing, but I found a way to achieve the desired effect and I'm happy with the result.
+
+![gif](./media/READMEmd/progress18.gif)
+
+Here is the code fragment:
+
+- on `JS`:
+```javascript
+  boardScan(){
+    //hide all tiles
+    let allTiles = document.querySelectorAll(".tile");
+    allTiles.forEach(t => {
+      t.classList.add("shrink");
+    });
+    //creates an array with value-- for diagonal effect
+    let arr = [];
+    for(let i = board.height; i > 0; i--) arr.push(i-board.height);
+    //reveal the tiles in a diagonal line
+    for(let i = 0; i < board.width+board.height; i++){
+      setTimeout(() => {
+        for(let j = 0; j < board.height; j++){
+          if(board.tileDom(i+arr[j],j) != undefined){
+            //"i+arr[j]" allows the diagonal to be out of phase horizontally
+            board.tileDom(i+arr[j],j).classList.add("game-start");
+            board.tileDom(i+arr[j],j).classList.remove("shrink");
+          };
+        };
+        //removes "game-start" class after animation
+        if(i < board.width+board.height){
+          setTimeout(() => {
+            allTiles.forEach(t => {
+              t.classList.remove("game-start");
+            });
+          }, 2000);
+        };
+      }, 20*i+1);
+    };
+  },
+```
+
+- on `CSS`
+```CSS
+.shrink {
+  scale: 0%;
+}
+.game-start {
+  animation: growing 500ms;
+}
+@keyframes growing {
+  from {
+    scale: 0%;
+  }
+  to {
+    scale: 100%;
+  }
+}
+```
