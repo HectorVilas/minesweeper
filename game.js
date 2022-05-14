@@ -15,7 +15,6 @@ let board = {
   array: [], //each array inside: [Y position, X position]
   //setting the starting config
   newGame(){
-    animations.boardScan();
     this.face(1);
     interface.boardTop.mines.innerText = this.mines;
     gameOver = false;
@@ -25,6 +24,7 @@ let board = {
     this.remaining = this.width*this.height-this.mines;
     this.arrayBoard();
     this.drawBoard();
+    animations.boardScan();
   },
   //mine reveal on click
   leftClickAction(x,y){
@@ -389,20 +389,18 @@ let animations = {
   },
   //animate the tiles from left to right
   boardScan(){
-    for(let x = 0; x < board.width; x++){
+    let arr = [];
+    for(let i = board.height; i > 0; i--) arr.push(i-board.height);
+    console.log(arr);
+
+    for(let i = 0; i < board.width+board.height; i++){
       setTimeout(() => {
-        for(let y = 0; y < board.height; y++){
-          let tile = board.tileDom(x,y)
-          tile.classList.add("game-start");
+        for(let j = 0; j < board.height; j++){
+          if(board.tileDom(i+arr[j],j) != undefined){
+            board.tileDom(i+arr[j],j).classList.add("game-start");
+          };
         };
-        if(x == board.width-1) {
-          setTimeout(() => {
-            document.querySelectorAll(".game-start").forEach(t=>{
-              t.classList.remove("game-start");
-            });
-          }, 300);
-        }
-      }, 20*x+1);
+      }, 20*i+1);
     };
   },
 };
