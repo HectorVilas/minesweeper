@@ -389,16 +389,31 @@ let animations = {
   },
   //animate the tiles from left to right
   boardScan(){
+    //hide all tiles
+    let allTiles = document.querySelectorAll(".tile");
+    allTiles.forEach(t => {
+      t.classList.add("shrink");
+    });
+    //creates an array with value-- for diagonal effect
     let arr = [];
     for(let i = board.height; i > 0; i--) arr.push(i-board.height);
-    console.log(arr);
-
+    //reveal the tiles in a diagonal line
     for(let i = 0; i < board.width+board.height; i++){
       setTimeout(() => {
         for(let j = 0; j < board.height; j++){
           if(board.tileDom(i+arr[j],j) != undefined){
+            //"i+arr[j]" allows the diagonal to be out of phase horizontally
             board.tileDom(i+arr[j],j).classList.add("game-start");
+            board.tileDom(i+arr[j],j).classList.remove("shrink");
           };
+        };
+        //removes "game-start" class after animation
+        if(i < board.width+board.height){
+          setTimeout(() => {
+            allTiles.forEach(t => {
+              t.classList.remove("game-start");
+            });
+          }, 2000);
         };
       }, 20*i+1);
     };

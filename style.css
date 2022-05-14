@@ -152,14 +152,14 @@ p {
   z-index: 1;
 }
 
-.game-start {
-  animation: in-out 250ms;
+.shrink {
+  scale: 0%;
 }
-@keyframes in-out {
+.game-start {
+  animation: growing 500ms;
+}
+@keyframes growing {
   from {
-    scale: 100%;
-  }
-  50% {
     scale: 0%;
   }
   to {
