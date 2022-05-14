@@ -280,3 +280,8 @@ Today I made a few fixes and changes:
 I've wrote the "how to play" prompt. I also added some images and GIFs to the explanations.
 
 While playing a little to capture those images, I noticed that the method to prevent prompts opening after reseting the board won't always work, so I changed the comprobation to another variable. Now it won't show in the wrong time.
+
+# update 22
+I've added a "scan" animation to the board every time the player starts a new game. I wanted to make it advance in diagonal, but I'm still not sure how to do it. Tomorrow I'll try some ways to achieve the result I want. Maybe with a double `for`.
+
+![gif](./media/READMEmd/progress17.gif)
