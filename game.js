@@ -387,6 +387,7 @@ let animations = {
       }, timeOut*(i+1));
     }
   },
+  //animate the tiles from left to right
   boardScan(){
     for(let x = 0; x < board.width; x++){
       setTimeout(() => {
@@ -440,16 +441,9 @@ let interface = {
   },
   //listeners for buttons in the interface  
   addInterfaceListeners(){
-    // let playArea = document.querySelector(".play-area");
-    // playArea.addEventListener("mouseenter", (e) => {
-      // e.stopPropagation();
-    // });
     this.boardTop.face.addEventListener("click", () => {
         board.newGame();
     });
-    // this.content.addEventListener("mouseenter", () => {
-    //   console.log(1);
-    // });
     this.buttons.close.forEach(btn => {//cancel-close buttons
       btn.addEventListener("click", () => {
         this.prompt.fullScreenContainer.classList.toggle("hidden");
