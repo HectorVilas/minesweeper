@@ -344,3 +344,7 @@ Here is the code fragment:
   }
 }
 ```
+
+**Little change:** I found a nice looking wallpaper with a submarine and some naval mines, but there's no info about the author or any CC rules, also no results on reverse image searchs. Anyways, in the credits (burger button - "About/Credits" option) I made sure to leave the link to where I found that wallpaper.
+
+I put that image as wallpaper, and when a mine explodes, it will get a red tint for a few seconds, to add a little more drama to the explosion.
