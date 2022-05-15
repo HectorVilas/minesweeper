@@ -289,6 +289,7 @@ let board = {
 
 let animations = {
   tileExploding(x, y) {
+    board.tileDom(x,y).classList.add("wave");
     setTimeout(() => {
       let boom = board.tileDom(x, y);
       boom.classList.add("boom1");
@@ -333,6 +334,9 @@ let animations = {
     });
     return inRange;
   },
+  validsAround(x,y){
+    return this.valids([x-1,y-1],[x,y-1],[x+1,y-1],[x-1,y],[x+1,y],[x+1,y+1],[x,y+1],[x-1,y+1])
+  },
   //animation for tiles in a 5 tiles range when the player loses
   shockwave(x,y){
     document.querySelectorAll(".revealed").forEach(t => {
@@ -369,6 +373,26 @@ let animations = {
         board.tileDom(t[0],t[1]).classList.add("z5");
       });
     }, 400);
+    setTimeout(() => {
+      this.shockwaveFullBoard();
+    }, 500);
+  },
+  //expanding shockwave to the rest of the board
+  shockwaveFullBoard(){
+    let animated = document.querySelectorAll(".wave");
+    animated.forEach(tile => {
+      this.validsAround(parseInt(tile.getAttribute("x")),parseInt(tile.getAttribute("y")))
+      .forEach(t => {
+        this.validsAround(parseInt(t[0]),parseInt(t[1]))
+        .forEach(v => {
+          if(!board.tileDom(v[0],v[1]).className.includes("wave"))
+          this.tileExploding(v[0],v[1]);
+        });
+      });
+    });
+    setTimeout(() => {
+      this.shockwaveFullBoard();
+    }, 100);
   },
   //shakes the board once a mine explodes
   screenShake(){
