@@ -57,7 +57,7 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 ### visual elements:
 #### animations:
 - ✅ shockwave effect after revealing a mine
-- - ❌ expand the shockwave to the rest of the board
+- - ✅ expand the shockwave to the rest of the board
 - ✅ animation for board drawing 
 #### interface
 - ✅ prompt made of divs with absolute position to show in the middle of the screen, over the board itself
@@ -348,3 +348,11 @@ Here is the code fragment:
 **Little change:** I found a nice looking wallpaper with a submarine and some naval mines, but there's no info about the author or any CC rules, also no results on reverse image searchs. Anyways, in the credits (burger button - "About/Credits" option) I made sure to leave the link to where I found that wallpaper.
 
 I put that image as wallpaper, and when a mine explodes, it will get a red tint for a few seconds, to add a little more drama to the explosion.
+
+# update 24
+
+I just expanded the shockwave to the entire board! It wasn't easy, and didn't noticed `JS` turning ints into strings randomly, something that was ruining all my tests.
+
+Anyways, I added a checkbox in the Options menu to enable this effect, because its very CPU intensive. I'ts unchecked by default because of this.
+
+![gif](./media/READMEmd/progress19.gif)
