@@ -373,9 +373,11 @@ let animations = {
         board.tileDom(t[0],t[1]).classList.add("z5");
       });
     }, 400);
+    if(document.querySelector("#Shockwave").checked){
     setTimeout(() => {
-      this.shockwaveFullBoard();
-    }, 500);
+        this.shockwaveFullBoard();
+      }, 500);
+    };
   },
   //expanding shockwave to the rest of the board
   shockwaveFullBoard(){
@@ -391,10 +393,12 @@ let animations = {
       });
     });
     setTimeout(() => {
-      this.shockwaveFullBoard();
+      if(animated.length != board.width*board.height){
+        this.shockwaveFullBoard();
+      };
     }, 100);
   },
-  //shakes the board once a mine explodes
+    //shakes the board once a mine explodes
   screenShake(){
     let target = document.querySelector(".play-area");
     let slowDown = 10; //number of shakes
@@ -465,6 +469,7 @@ let interface = {
       mines: document.querySelector("#mines-count"),
       minesDisplay: document.querySelector(".mines-count"),
       sounds: document.querySelector("#sounds"),
+      fullShockwave: document.querySelector("#Shockwave")
     },
   },
   dropDown: {
