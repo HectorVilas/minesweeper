@@ -241,6 +241,7 @@ let board = {
       this.face(3);
       animations.shockwave(x,y);
       animations.screenShake();
+      animations.backgroundBoom();
       setTimeout(() => {
         if(playerWins !== undefined){
           this.revealMines();
@@ -413,10 +414,16 @@ let animations = {
             allTiles.forEach(t => {
               t.classList.remove("game-start");
             });
-          }, 2000);
+          }, 3000);
         };
       }, 20*i+1);
     };
+  },
+  backgroundBoom(){
+    interface.content.classList.remove("background-boom");
+    setTimeout(() => {
+      interface.content.classList.add("background-boom");
+    }, 100);
   },
 };
 

@@ -166,6 +166,26 @@ p {
     scale: 100%;
   }
 }
+.background-boom {
+  animation: exploding 5s;
+}
+@keyframes exploding {
+  from {
+    background-color: rgba(255, 0, 0, 0);
+  }
+  15% {
+    background-color: rgba(150, 0, 0, 1);
+  }
+  50% {
+    background-color: rgba(150, 0, 0, .7);
+  }
+  75% {
+    background-color: rgba(150, 0, 0, .4);
+  }
+  to {
+    background-color: rgba(255, 0, 0, 0);
+  }
+}
 
 /*preventing animation inconsistency*/
 .tile.revealed-no-transition { 
@@ -184,13 +204,19 @@ p {
 /*interface*/
 
 header {
-  background-color: var(--color-page-2);
+  background-color: var(--color-page-1);
   /* padding: 3px; */
   box-shadow: 0 0 5px black;
   z-index: 98;
   height: 30px;
   font-size: 22px;
   font-weight: 600;
+}
+
+.content {
+  background-image: url(./media/images/wallpaper.jpg);
+  background-size: cover;
+  background-blend-mode: darken;
 }
 
 .button-menu {
