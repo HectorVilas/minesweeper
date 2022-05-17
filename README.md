@@ -396,4 +396,4 @@ Anyways, I did another two changes. The page now have a favicon, no big deal, bu
 
 Here's another gif, the screen recorder doesn't struggle anymore and looks smoother than the previous gif.
 
-![gif](media%5CREADMEmd%5Cprogress20.gif)
+![gif](./media/READMEmd/progress20.gif)
