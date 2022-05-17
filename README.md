@@ -350,9 +350,50 @@ Here is the code fragment:
 I put that image as wallpaper, and when a mine explodes, it will get a red tint for a few seconds, to add a little more drama to the explosion.
 
 # update 24
-
 I just expanded the shockwave to the entire board! It wasn't easy, and didn't noticed `JS` turning ints into strings randomly, something that was ruining all my tests.
 
 Anyways, I added a checkbox in the Options menu to enable this effect, because its very CPU intensive. I'ts unchecked by default because of this.
 
 ![gif](./media/READMEmd/progress19.gif)
+
+# update 25
+I tried to replace some `JS` with `CSS`' `@keyframes` but for some reason the animation never showed up on time, and all the tiles got animated at the same time with random delays. I'm going to learn advanced `CSS` later in the course from I'm learning Front End, so I'll leave it the code alone for now.
+
+This was my try, working as espected, but not showing on time:
+
+```css
+.tile-exploding {
+  animation: tileExploding 3s;
+}
+@keyframes tileExploding {
+  from {
+    scale: 100%;
+  }
+  10% {
+    scale: 200%;
+    box-shadow: 0 0 20px darkred;
+  }
+  20% {
+    scale: 40%;
+    box-shadow: 0 0 30px white;
+  }
+  45% {
+    scale: 150%;
+    box-shadow: 3px 3px 10px black;
+  }
+  70% {
+    scale: 80%;
+    box-shadow: 0 0 0px black;
+  }
+  to {
+    scale: 100%;
+  }
+}
+
+```
+
+Anyways, I did another two changes. The page now have a favicon, no big deal, but there it is. Also I noticed that the expanded shockwave have an unnecesary extra step, making the tiles to animate in pairs instead of one by one. I think this eased the CPU usage, I can't see big usage spikes in mine, but still the setting will be disabled by default.
+
+Here's another gif, the screen recorder doesn't struggle anymore and looks smoother than the previous gif.
+
+![gif](media%5CREADMEmd%5Cprogress20.gif)
