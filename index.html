@@ -46,32 +46,37 @@
       <!--middle-->
       <div class="prompt-center flex flex-h-center">
         <!--options-->
-        <div class="options flex flex-item-auto flex-h-center flex-column text-center hidden">
+        <div class="options flex flex-item-auto flex-h-center flex-column hidden">
           <form action="">
-            <fieldset class="flex flex-h-center flex-column">
+            <fieldset class="flex flex-h-center flex-column ">
               <legend>Width</legend>
               <input type="range" name="board-width" id="board-width" min="5" max="50" value="30">
               <output class="board-width" for="board-width">30</output>
             </fieldset>
-            <fieldset class="flex flex-h-center flex-column">
+            <fieldset class="flex flex-h-center flex-column text-center">
               <legend>Height</legend>
               <input type="range" name="board-height" id="board-height" min="5" max="50" value="15">
               <output class="board-height" for="board-height">15</output>
             </fieldset>
-            <fieldset class="flex flex-h-center flex-column">
+            <fieldset class="flex flex-h-center flex-column text-center">
               <legend>Mines</legend>
               <input type="range" name="mines-count" id="mines-count" min="5" max="449" value="30">
               <output class="mines-count" for="mines-count">30</output>
             </fieldset>
             <fieldset class="flex flex-h-center">
               <legend>Audio</legend>
-              <label for="sounds">Play sounds:</label>
-              <input type="checkbox" name="sounds" id="sounds" checked>
+              <label class="checkboxes" for="sounds">
+                <input type="checkbox" name="sounds" id="sounds" checked>
+                Play sounds
+              </label>
             </fieldset>
             <fieldset class="flex flex-h-center">
               <legend>Visual settings</legend>
-              <label for="sounds">Full shockwave (unoptimized):</label>
-              <input type="checkbox" name="Shockwave" id="Shockwave">
+              <label class="checkboxes" for="sounds">
+                <input type="checkbox" name="Shockwave" id="Shockwave">
+                Full shockwave
+              </label>
+              
             </fieldset>
           </form>
         </div>
