@@ -397,3 +397,7 @@ Anyways, I did another two changes. The page now have a favicon, no big deal, bu
 Here's another gif, the screen recorder doesn't struggle anymore and looks smoother than the previous gif.
 
 ![gif](./media/READMEmd/progress20.gif)
+
+Another little change: styled checkboxes. With help from [this tutorial](https://moderncss.dev/pure-css-custom-checkbox-style/) (mine is less fancy).
+
+![gif](./media/READMEmd/progress21.gif)
