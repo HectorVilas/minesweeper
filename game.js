@@ -385,11 +385,8 @@ let animations = {
     animated.forEach(tile => {
       this.validsAround(parseInt(tile.getAttribute("x")),parseInt(tile.getAttribute("y")))
       .forEach(t => {
-        this.validsAround(parseInt(t[0]),parseInt(t[1]))
-        .forEach(v => {
-          if(!board.tileDom(v[0],v[1]).className.includes("wave"))
-          this.tileExploding(v[0],v[1]);
-        });
+        if(!board.tileDom(t[0],t[1]).className.includes("wave"))
+        this.tileExploding(t[0],t[1]);
       });
     });
     setTimeout(() => {
