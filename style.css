@@ -263,10 +263,22 @@ header {
 }
 
 .face {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
 }
 
+.display-numbers{
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  gap: 5px;
+  background-color: #555;
+  border: 3px inset white;
+  
+}.display-numbers>img {
+  /* flex: 1 1 auto; */
+  width: 15px;
+}
 
 /*prompts*/
 

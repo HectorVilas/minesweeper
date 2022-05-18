@@ -17,6 +17,7 @@ let board = {
   newGame(){
     this.face(1);
     interface.boardTop.mines.innerText = this.mines;
+    interface.display("mines", interface.boardTop.mines.innerText);
     gameOver = false;
     playerWins = undefined;
     firstTile = [];
@@ -277,12 +278,14 @@ let board = {
     if(arr == "start"){
       secondsCount = setInterval(() => {
         interface.boardTop.time.innerText++;
+        interface.display("time",interface.boardTop.time.innerText);
       }, 1000);
     } else if(arr == "stop") {
       clearInterval(secondsCount);
     } else if(arr == "clear"){
       clearInterval(secondsCount);
       interface.boardTop.time.innerText = 0;
+      interface.display("time",interface.boardTop.time.innerText);
     };
   },
 };
@@ -618,7 +621,29 @@ let interface = {
     if(!gameOver){
       let flagsCount = document.querySelectorAll(".flag").length;
       this.boardTop.mines.innerText = board.mines - flagsCount;
+      interface.display("mines", interface.boardTop.mines.innerText);
     };
+  },
+  //shows numbers in the LCD-like display, worth for both displays
+  display(arr,num){
+    let display = document.querySelector(`#display-${arr}`);
+    let unit = display.querySelector(".unit");
+    let ten = display.querySelector(".ten");
+    let hundred = display.querySelector(".hundred");
+    let thousand = display.querySelector(".thousand");
+    
+    let fourDigitNum = ["none","none","none","none"];
+    let arrNum = num.toString().split("");
+    for(let i = 0; i < arrNum.length; i++){
+      fourDigitNum.shift();
+      fourDigitNum.push(arrNum[i])
+    };
+    
+    unit.src = `./media/images/display/${fourDigitNum[3]}.png`
+    ten.src = `./media/images/display/${fourDigitNum[2]}.png`
+    hundred.src = `./media/images/display/${fourDigitNum[1]}.png`
+    thousand.src = `./media/images/display/${fourDigitNum[0]}.png`
+    
   },
 };
 

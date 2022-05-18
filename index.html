@@ -25,9 +25,25 @@
   <div class="content flex flex-h-center flex-v-center flex-column flex-item-auto">
     <div class="play-area flex flex-column">
       <div class="top-board flex">
-        <div class="flex flex-item-no-basis flex-h-start flex-v-center"><p><strong>mines: <span class="mines-remaining">0</span></strong></p></div>
+        <div class="flex flex-item-no-basis flex-h-start flex-v-center hidden"><p><strong>mines: <span class="mines-remaining">0</span></strong></p></div>
+        
+        <div class="display-numbers" id="display-mines">
+          <img class="thousand" src="./media/images/display/none.png">
+          <img class="hundred" src="./media/images/display/none.png">
+          <img class="ten" src="./media/images/display/none.png">
+          <img class="unit" src="./media/images/display/none.png">
+        </div>
+
         <div class="flex flex-item-no-basis flex-h-center"><button class="button-face flex"><img class="face" src="./media/images/face01.png"></button></div>
-        <div class="flex flex-item-no-basis flex-h-end flex-v-center"><p><strong>Time: <span class="elapsed-time">0</span></strong></p></div>
+        
+        <div class="display-numbers" id="display-time">
+          <img class="thousand" src="./media/images/display/none.png">
+          <img class="hundred" src="./media/images/display/none.png">
+          <img class="ten" src="./media/images/display/none.png">
+          <img class="unit" src="./media/images/display/none.png">
+        </div>
+        
+        <div class="flex flex-item-no-basis flex-h-end flex-v-center hidden"><p><strong>Time: <span class="elapsed-time">0</span></strong></p></div>
       </div>
       <div class="board flex"></div>
     </div>
