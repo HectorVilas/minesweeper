@@ -401,3 +401,38 @@ Here's another gif, the screen recorder doesn't struggle anymore and looks smoot
 Another little change: styled checkboxes. With help from [this tutorial](https://moderncss.dev/pure-css-custom-checkbox-style/) (mine is less fancy).
 
 ![gif](./media/READMEmd/progress21.gif)
+
+# update 26
+
+Today I've been looking for something to change, to make the game a little better (for my daily practice), and came with the idea of adding LCD-like displays like in the original game. After finishing drawing the numbers on Gimp and a few hours later of coding, I made this:
+
+![gif](./media/READMEmd/progress22.gif)
+
+Here is the code. Maybe there's a better way to write this, looks too extensive for something that simple.
+
+```javascript
+//...
+display(arr,num){
+  let display = document.querySelector(`#display-${arr}`);
+  let unit = display.querySelector(".unit");
+  let ten = display.querySelector(".ten");
+  let hundred = display.querySelector(".hundred");
+  let thousand = display.querySelector(".thousand");
+  
+  let fourDigitNum = ["none","none","none","none"];
+  let arrNum = num.toString().split("");
+  for(let i = 0; i < arrNum.length; i++){
+    fourDigitNum.shift();
+    fourDigitNum.push(arrNum[i])
+  };
+  
+  unit.src = `./media/images/display/${fourDigitNum[3]}.png`
+  ten.src = `./media/images/display/${fourDigitNum[2]}.png`
+  hundred.src = `./media/images/display/${fourDigitNum[1]}.png`
+  thousand.src = `./media/images/display/${fourDigitNum[0]}.png`
+  
+},
+//...
+  ```
+  
+  Because I used DOM element's info, deleting the original text version required a lot of code rewriting, so I did the laziest thing and hid those numbers. Anyways, now I learned that I shoud leave all the data in the JS file, not in the DOM. Now it works without problems, but still I will fix that in the future, as a practice, because I never modified a big enough part of my code.
