@@ -213,6 +213,12 @@ header {
   font-weight: 600;
 }
 
+.language-selector {
+  background-color: var(--color-page-3);
+  border-color: var(--color-page-1);
+  font-size: 18px;
+}
+
 .content {
   background-image: url(./media/images/wallpaper.jpg);
   background-size: cover;
