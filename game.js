@@ -1,4 +1,4 @@
-let language = "english";
+let isInEnglish = true;
 let gameOver = false;
 let playerWins = undefined;
 let firstTile = [];
@@ -483,6 +483,7 @@ let interface = {
     menu: document.querySelector(".button-menu"),
     close: document.querySelectorAll(".prompt-button-close"),
     ok: document.querySelector(".prompt-button-ok"),
+    language: document.querySelector(".language-selector"),
   },
   boardTop: {
     mines: document.querySelector(".mines-remaining"),
@@ -538,6 +539,10 @@ let interface = {
       board.mines =
       this.prompt.options.minesDisplay.innerText =
       parseInt(this.prompt.options.mines.value);
+    });
+    this.buttons.language.addEventListener("click", () => {
+      isInEnglish = !isInEnglish;
+      setLanguage();
     });
   },
   //listeners to detect mouse dragging and disable context menu
@@ -665,7 +670,7 @@ let audio = {
 
 //changes page language in real time, without refreshing
 function setLanguage(){
-  if(language == "english"){
+  if(isInEnglish){
     document.querySelectorAll(".english")
     .forEach(text => text.classList.remove("hidden"));
     document.querySelectorAll(".spanish")
