@@ -1,3 +1,4 @@
+let language = "english";
 let gameOver = false;
 let playerWins = undefined;
 let firstTile = [];
@@ -662,7 +663,23 @@ let audio = {
   },
 };
 
+//changes page language in real time, without refreshing
+function setLanguage(){
+  if(language == "english"){
+    document.querySelectorAll(".english")
+    .forEach(text => text.classList.remove("hidden"));
+    document.querySelectorAll(".spanish")
+    .forEach(text => text.classList.add("hidden"));
+  }else{
+    document.querySelectorAll(".english")
+    .forEach(text => text.classList.add("hidden"));
+    document.querySelectorAll(".spanish")
+    .forEach(text => text.classList.remove("hidden"));
+  };
+};
+
 //initial configs to start the game on page load
+setLanguage();
 board.newGame();
 interface.addInterfaceListeners();
 interface.addWindowListeners();
