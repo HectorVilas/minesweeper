@@ -12,13 +12,25 @@
 <body>
   <header class="flex flex-justify-between flex-v-center">
     <img class="button-menu" src="./media/images/menu.png">
-    <div class="flex flex-item-auto flex-h-center"><p>Minesweeper</p></div>
+    <div class="flex flex-item-auto flex-h-center">
+      <p class="english">Minesweeper</p>
+      <p class="spanish">Buscaminas</p>
+    </div>
   </header>
   <!--dropdown-->
   <div class="dropdown-menu hidden-dropdown flex flex-column">
-    <button class="dropdown-option dropdown-options"><p>Game options</p></button>
-    <button class="dropdown-option dropdown-how-to-play"><p>How to play</p></button>
-    <button class="dropdown-option dropdown-about"><p>About/credits</p></button>
+    <button class="dropdown-option dropdown-options">
+      <p class="english">Game options</p>
+      <p class="spanish">Opciones de juego</p>
+    </button>
+    <button class="dropdown-option dropdown-how-to-play">
+      <p class="english">How to play</p>
+      <p class="spanish">Cómo jugar</p>
+    </button>
+    <button class="dropdown-option dropdown-about">
+      <p class="english">About / credits</p>
+      <p class="spanish">Acerca de / créditos</p>
+    </button>
   </div>
 
   <!--game-->
@@ -65,17 +77,20 @@
         <div class="options flex flex-item-auto flex-h-center flex-column hidden">
           <form action="">
             <fieldset class="flex flex-h-center flex-column ">
-              <legend>Width</legend>
+              <legend class="english">Width</legend>
+              <legend class="spanish">Ancho</legend>
               <input type="range" name="board-width" id="board-width" min="5" max="50" value="30">
               <output class="board-width" for="board-width">30</output>
             </fieldset>
             <fieldset class="flex flex-h-center flex-column text-center">
-              <legend>Height</legend>
+              <legend class="english">Height</legend>
+              <legend class="spanish">Alto</legend>
               <input type="range" name="board-height" id="board-height" min="5" max="50" value="15">
               <output class="board-height" for="board-height">15</output>
             </fieldset>
             <fieldset class="flex flex-h-center flex-column text-center">
-              <legend>Mines</legend>
+              <legend class="english">Mines</legend>
+              <legend class="spanish">Minas</legend>
               <input type="range" name="mines-count" id="mines-count" min="5" max="449" value="30">
               <output class="mines-count" for="mines-count">30</output>
             </fieldset>
@@ -83,14 +98,17 @@
               <legend>Audio</legend>
               <label class="checkboxes" for="sounds">
                 <input type="checkbox" name="sounds" id="sounds" checked>
-                Play sounds
+                <p class="english">Play sounds</p>
+                <p class="spanish">Reproducir sonidos</p>
               </label>
             </fieldset>
             <fieldset class="flex flex-h-center">
-              <legend>Visual settings</legend>
+              <legend class="english">Visual settings</legend>
+              <legend class="spanish">Opciones visuales</legend>
               <label class="checkboxes" for="Shockwave">
                 <input type="checkbox" name="Shockwave" id="Shockwave">
-                Full shockwave
+                <p class="english">Full shockwave</p>
+                <p class="spanish">Onda expansiva completa</p>
               </label>
               
             </fieldset>
@@ -98,67 +116,108 @@
         </div>
         <!--How to play-->
         <div class="how-to-play hidden flex flex-column flex-v-center text-justify">
-          <p>The objective of the game is to reveal all the board without falling
+          <p class="english">The objective of the game is to reveal all the board without falling
             on a mine.</p>
+            <p class="spanish">El objetivo del juego es revelar todo el tablero sin caer
+              en una mina.</p>
           <img src="./media/images/how-to-play/how-to-01.png">
-          <p>Once you reveal a tile, it will show the number of mines around it,
+          <p class="english">Once you reveal a tile, it will show the number of mines around it,
             giving you some clues as to where the mines would be.</p>
+          <p class="spanish">Una vez que revele un cuadrito, éste mostrará el número de minas que le rodean,
+            dando pistas de dónde pueden encontrarse las minas.</p>
           <img src="./media/images/how-to-play/how-to-02.png">
-          <p>If there's no mines around, the surrounding tiles will reveal itself.
+          <p class="english">If there's no mines around, the surrounding tiles will reveal itself.
             If those tiles are also not surrounded, they will also reveal,
             until it finds some mines.</p>
+          <p class="spanish">Si no hay minas al rededor, los cuadritos que le rodean se revelarán por si solos.
+            Si esos cuadritos tampoco se encuentran rodeados, también se revelarán,
+            hasta que se encuentren minas cercanas.</p>
           <img src="./media/images/how-to-play/how-to-03.gif">
-          <p>You can deduce if there's a mine in a tile based on it's surrounding
+          <p class="english">You can deduce if there's a mine in a tile based on it's surrounding
             tiles with numbers. If you are sure there's a mine, you can place a flag
             with the right mouse button.</p>
+          <p class="spanish">Puede deducir si hay una mina en el cuadrito basándose en los cuadritos que le rodean
+            que contengan números. Si está seguro de que hay una mina, puede marcarlo con una bandera
+            con el botón derecho del mouse.</p>
           <img src="./media/images/how-to-play/how-to-04.png">
-          <p>You can remove the flag if you click on it with the right mouse button
+          <p class="english">You can remove the flag if you click on it with the right mouse button
             again. Remember: you can't place more flags than mines on board, so remove
             any other flag first.</p>
-          <p>Once you reveal all the safe tiles, no matter how many flags you placed,
+          <p class="spanish">Puede quitar una bandera clickeándola con el botón derecho del mouse.
+            Recuerde: no puede poner más banderas que minas en el tablero, así que
+            primero remueva otra bandera.</p>
+          <p class="english">Once you reveal all the safe tiles, no matter how many flags you placed,
             the game is over, you won!</p>
+          <p class="spanish">Una vez revele todos los cuadritos seguros, sin importar cuántas banderas ha puesto,
+            el juego acabará, ¡Ha ganado!</p>
           <img src="./media/images/how-to-play/how-to-05.gif">
-          <p>But be careful! If you reveal a mine, it will explode! Game over.</p>
+          <p class="english">But be careful! If you reveal a mine, it will explode! Game over.</p>
+          <p class="spanish">Pero tenga cuidado! Si revela una mina, ésta explotará! Fin del juego.</p>
           <img src="./media/images/how-to-play/how-to-06.gif">
-          <p>You can start a new game at any time by clickling on the smiley
+          <p class="english">You can start a new game at any time by clickling on the smiley
             face at the top of the board.</p>
-          <p>Remember: you can change the game settings to make it easier or harder.
+          <p class="spanish">Puede empezar un nuevo juego en cualquier momento clickenado en la carita
+            sonriente que se encuentra sobre el tablero.</p>
+          <p class="english">Remember: you can change the game settings to make it easier or harder.
             You can also disable the sounds in case you don't want them.</p>
+          <p class="spanish">Recuerde: puede cambiar las opciones de juego para hacerlo más fácil o más difícil.
+            También puede desactivar los sonidos en caso de que no los quiera oír.</p>
           <img src="./media/images/how-to-play/how-to-07.gif">
 
         </div>
         <!--about/credits-->
         <div class="about hidden">
           <ul>
-            <li>
+            <li class="english">
               Game made by <a href="https://github.com/HectorVilas" target="_blank">
               <img class="github-logo" src="./media/images/GitHub.png"> HectorVilas</a>
               in HTML, CSS and JavaScript
             </li>
-            <li>
+            <li class="spanish">
+              Juego hecho por <a href="https://github.com/HectorVilas" target="_blank">
+              <img class="github-logo" src="./media/images/GitHub.png"> HectorVilas</a>
+              en HTML, CSS y JavaScript
+            </li>
+            <li class="english">
               <a href="https://freesound.org/people/NoiseCollector/sounds/6164/"  target="_blank">Sonar</a>
               sound by <a href="https://freesound.org/people/NoiseCollector/" target="_blank">NoiseCollector</a>
               on freesound.org
             </li>
-            <li>
+            <li class="spanish">
+              Sonido <a href="https://freesound.org/people/NoiseCollector/sounds/6164/"  target="_blank">Sonar</a>
+              por <a href="https://freesound.org/people/NoiseCollector/" target="_blank">NoiseCollector</a>
+              en freesound.org
+            </li>
+            <li class="english">
               <a href="https://freesound.org/people/VitaWrap/sounds/434545/" target="_blank">Underwater explosion</a>
               sound by <a href="https://freesound.org/people/VitaWrap/" target="_blank">VitaWrap</a>
               on freesound.org
             </li>
-            <li>
+            <li class="spanish">
+              Sonido de <a href="https://freesound.org/people/VitaWrap/sounds/434545/" target="_blank">explosión bajo el agua</a>
+              por <a href="https://freesound.org/people/VitaWrap/" target="_blank">VitaWrap</a>
+              en freesound.org
+            </li>
+            <li class="english">
               <a href="https://million-wallpapers.com/weapons-and-army-323-desktop-wallpapers/a-submarine-in-the-depths-of-the-ocean-34501.html" target="_blank">Wallpaper</a> from million-wallpapers.com
+            </li>
+            <li class="spanish">
+              <a href="https://million-wallpapers.com/weapons-and-army-323-desktop-wallpapers/a-submarine-in-the-depths-of-the-ocean-34501.html" target="_blank">Fondo de pantalla</a> de million-wallpapers.com
             </li>
           </ul>
         </div>
         <!--win message-->
-        <div class="win-message hidden"><p>YOU WIN!</p><p>Play again?</p></div>
+        <div class="win-message hidden"><p class="english">YOU WIN!</p><p class="spanish">¡HA GANADO!</p><p class="english">Play again?</p><p class="spanish">¿Jugar otra vez?</p></div>
         <!--lose message-->
-        <div class="lose-message hidden"><p>A mine exploded!</p><p>Play again?</p></div>
+        <div class="lose-message hidden"><p class="english">A mine exploded!</p><p class="spanish">¡Ha explotado una mina!</p><p class="english">Play again?</p><p class="spanish">¿Jugar otra vez?</p></div>
       </div>
       <!--bottom-->
       <div class="prompt-bottom flex flex-h-center flex-justify-around">
         <button class="prompt-button-ok">Ok</button>
-        <button class="prompt-button-close">Close</button>
+        <button class="prompt-button-close">
+          <p class="english">Close</p>
+          <p class="spanish">Cerrar</p>
+        </button>
       </div>
     </div>
   </div>
