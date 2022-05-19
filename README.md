@@ -75,7 +75,7 @@ As I'm rewriting the same game, the roadmap will be the same as [the previous ve
 - - ✅ sound toggle button in options
 - ❌ show the README.md in the page (may create a new repo for this)
 - ✅ replace numbers for images (preventing bad tile scaling)
-- ❌ language selector (english - spanish)
+- ✅ language selector (english - spanish)
 
 ### sounds:
 - ✅ submarine sonar sound if there's propagation
@@ -433,6 +433,42 @@ display(arr,num){
   
 },
 //...
-  ```
-  
-  Because I used DOM element's info, deleting the original text version required a lot of code rewriting, so I did the laziest thing and hid those numbers. Anyways, now I learned that I shoud leave all the data in the JS file, not in the DOM. Now it works without problems, but still I will fix that in the future, as a practice, because I never modified a big enough part of my code.
+```
+Because I used DOM element's info, deleting the original text version required a lot of code rewriting, so I did the laziest thing and hid those numbers. Anyways, now I learned that I shoud leave all the data in the JS file, not in the DOM. Now it works without problems, but still I will fix that in the future, as a practice, because I never modified a big enough part of my code.
+
+# update 27
+Maybe you already noticed my weird english, that's because I'm a spanish speaker and I'm still learning english, heh. Because of this, now I can check another part of the roadmap, because the game now can be played on english or spanish:
+
+![gif](./media/READMEmd/progress23.gif)
+
+As you can see, you can change language without refreshing the site. This was pretty easy, I just duplicated and translated all the text in the HTML file and added language classe. When the page loads, all the spanish text is hidden. If the flags button is clicked, whatever is tagged "english" will be hidden, and all the "spanish" ones will show, taking it's place.
+
+To make it a little more clear, here is the function to swap language:
+
+```javascript
+function setLanguage(){
+  if(isInEnglish){
+    document.querySelectorAll(".english")
+    .forEach(text => text.classList.remove("hidden"));
+    document.querySelectorAll(".spanish")
+    .forEach(text => text.classList.add("hidden"));
+  }else{
+    document.querySelectorAll(".english")
+    .forEach(text => text.classList.add("hidden"));
+    document.querySelectorAll(".spanish")
+    .forEach(text => text.classList.remove("hidden"));
+  };
+};
+```
+
+And this is the button code:
+
+```javascript
+this.buttons.language.addEventListener("click", () => {
+  isInEnglish = !isInEnglish;
+  setLanguage();
+});
+```
+
+# final thoughts
+### I think the project is more than finished. I had a few other ideas but it's time to move on, to finally stop making excuses to not continue with the frontend course (I still find forms easy but boring to learn) and finally [embiggen](https://youtu.be/FcxsgZxqnEg?t=66) my knowledge.
