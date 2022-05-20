@@ -24,7 +24,11 @@ let board = {
     firstTile = [];
     this.timer("clear");
     this.remaining = this.width*this.height-this.mines;
-    this.arrayBoard();
+    if(interface.prompt.options.newRandom.checked){
+      this.arrayBoardNewMethod();
+    } else {
+      this.arrayBoard();
+    }
     this.drawBoard();
     animations.boardScan();
   },
@@ -36,7 +40,9 @@ let board = {
       if(this.width*this.height-9 >= this.mines){
         this.surroundingTiles(x,y).forEach(t => firstTile.push(t.toString()))
       }
-      this.placeMines();
+      if(!interface.prompt.options.newRandom.checked){
+        this.placeMines();
+      };
     };
     this.revealTile(x,y);
     this.revealConnected(x,y);
@@ -51,6 +57,33 @@ let board = {
         this.array[y].push(0);
       };
     };
+  },
+  //another way to generate the board and randomize the mines
+  arrayBoardNewMethod(){
+    this.array = [];
+    let arrEmpties = Array(this.width*this.height-this.mines).fill(0);
+    let arrMines = Array(this.mines).fill("m");
+    let mixed = arrEmpties.concat(arrMines).sort(() => Math.random() > 0.5 ? 1 : -1);
+    
+    let minesPositions = [];
+    let currentRow = 0;
+    for(let i = 0; i < this.height*this.width; i+= this.width){
+      let row = []  
+      for(let j = 0; j < this.width; j++){
+        let placing = mixed[i+j];
+        row.push(placing);
+        if(placing == "m"){
+          minesPositions.push([j,currentRow]);
+        };
+      };
+      this.array.push(row);
+      currentRow++;
+    };
+    minesPositions.forEach( m => {
+      // console.log(this.tileDom(m[0],m[1]));
+      this.surroundingTiles(m[0],m[1]).forEach(t => this.array[t[1]][t[0]] += 1)
+    });
+    // console.table(this.array);
   },
   //draws the array board on screen with divs, apply listeners
   drawBoard(){
@@ -470,7 +503,8 @@ let interface = {
       mines: document.querySelector("#mines-count"),
       minesDisplay: document.querySelector(".mines-count"),
       sounds: document.querySelector("#sounds"),
-      fullShockwave: document.querySelector("#Shockwave")
+      fullShockwave: document.querySelector("#Shockwave"),
+      newRandom: document.querySelector("#new-random"),
     },
   },
   dropDown: {
