@@ -472,3 +472,10 @@ this.buttons.language.addEventListener("click", () => {
 
 # final thoughts
 ### I think the project is more than finished. I had a few other ideas but it's time to move on, to finally stop making excuses to not continue with the frontend course (I still find forms easy but boring to learn) and finally [embiggen](https://youtu.be/FcxsgZxqnEg?t=66) my knowledge.
+
+# update 28
+"I think the project is more than finished"? Can a project be really finished? Today I tried to randomize the mines with a new method, a method that I saw somewhere a week ago that consist in concatenating two arrays and scramble it's content with `.sort()`, then I wrote another way to know the X and Y coordinates of each mine and place the numbers around. Mine is not perfect, as you can see in the image:
+
+![new random method](./media/READMEmd/progress24.png)
+
+Maybe I need to scramble it a little more? Anyways, this setting can be toggled from the Options menu.
