@@ -479,3 +479,7 @@ this.buttons.language.addEventListener("click", () => {
 ![new random method](./media/READMEmd/progress24.png)
 
 Maybe I need to scramble it a little more? Anyways, this setting can be toggled from the Options menu.
+
+**little update**: solved the bad randomization by simply applying `.sort()` 10 times instead of just one:
+
+![gif](./media/READMEmd/progress25.gif)
