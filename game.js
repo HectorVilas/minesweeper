@@ -59,32 +59,34 @@ let board = {
     };
   },
   //another way to generate the board and randomize the mines
-  arrayBoardNewMethod(){
-    this.array = [];
-    let arrEmpties = Array(this.width*this.height-this.mines).fill(0);
-    let arrMines = Array(this.mines).fill("m");
-    let mixed = arrEmpties.concat(arrMines).sort(() => Math.random() > 0.5 ? 1 : -1);
-    
-    let minesPositions = [];
-    let currentRow = 0;
-    for(let i = 0; i < this.height*this.width; i+= this.width){
-      let row = []  
-      for(let j = 0; j < this.width; j++){
-        let placing = mixed[i+j];
-        row.push(placing);
-        if(placing == "m"){
-          minesPositions.push([j,currentRow]);
-        };
+arrayBoardNewMethod(){
+  this.array = [];
+  let arrEmpties = Array(this.width*this.height-this.mines).fill(0);
+  let arrMines = Array(this.mines).fill("m");
+  let mixed = arrEmpties.concat(arrMines)
+  
+  for(let i = 0; i < 10; i++){
+    mixed.sort(() => Math.random() > 0.5);
+  }
+
+  let minesPositions = [];
+  let currentRow = 0;
+  for(let i = 0; i < this.height*this.width; i+= this.width){
+    let row = []  
+    for(let j = 0; j < this.width; j++){
+      let placing = mixed[i+j];
+      row.push(placing);
+      if(placing == "m"){
+        minesPositions.push([j,currentRow]);
       };
-      this.array.push(row);
-      currentRow++;
     };
-    minesPositions.forEach( m => {
-      // console.log(this.tileDom(m[0],m[1]));
-      this.surroundingTiles(m[0],m[1]).forEach(t => this.array[t[1]][t[0]] += 1)
-    });
-    // console.table(this.array);
-  },
+    this.array.push(row);
+    currentRow++;
+  };
+  minesPositions.forEach( m => {
+    this.surroundingTiles(m[0],m[1]).forEach(t => this.array[t[1]][t[0]] += 1)
+  });
+},
   //draws the array board on screen with divs, apply listeners
   drawBoard(){
     this.dom.innerHTML = "";
