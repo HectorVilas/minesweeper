@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');:root {
   --color-page-1: #5c529e;
   --color-page-2: #C3C3E5;
-  --color-page-4: #F1F0FF;
   --color-page-3: #6997ac;
+  --color-page-4: #F1F0FF;
+  --color-page-5: #e4e4f5;
   --text-color-1: #000000;
   --text-color-2: #282828;
   --text-color-3: #505050;
@@ -214,9 +215,12 @@ header {
 }
 
 .language-selector {
+  --width: 75px;
   background-color: var(--color-page-3);
   border-color: var(--color-page-1);
   font-size: 18px;
+  width: var(--width);
+  margin-left: calc(var(--width)*-1);
 }
 
 .content {
@@ -278,7 +282,7 @@ header {
   align-items: center;
   padding: 2px;
   gap: 5px;
-  background-color: #555;
+  background-color: #333;
   border: 3px inset white;
   
 }.display-numbers>img {
@@ -348,6 +352,36 @@ header {
   margin: 20px 0;
 }
 
+fieldset {
+  margin: 5px;
+  background-color: var(--color-page-5);
+  border: 3px ridge white;
+  box-shadow: 2px 2px 0 var(--color-page-2);
+}
+legend {
+  border: 2px ridge white;
+  padding: 2px 5px;
+  background-color: var(--color-page-5);
+  box-shadow: 2px 2px 0 var(--color-page-2);
+}
+input[type="range"]{
+  appearance: none;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  height: 10px;
+  background-color: var(--color-page-2);
+  border: 3px inset white;
+}input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-moz-range-thumb
+{
+  appearance: none;
+  border-radius: 3px;
+  width: 50px;
+  scale: 110%;
+  border: 3px outset white;
+  background-color: var(--color-page-5);
+}
+
 /*prompt content*/
 
 .options{
@@ -371,7 +405,7 @@ header {
 
 .checkboxes {
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-columns: 1fr 10fr;
   gap: 10px;
 }
 input[type="checkbox"]{
@@ -382,6 +416,8 @@ input[type="checkbox"]{
   border-radius: 3px;
   width: 1.5em;
   height: 1.5em;
+}input[type="checkbox"]:hover {
+  border-color: #999;
 }input[type="checkbox"]:checked {
   box-shadow: inset 0 0 0 2px var(--color-page-4);
   background-color: var(--color-page-1);
