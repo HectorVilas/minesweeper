@@ -483,3 +483,11 @@ Maybe I need to scramble it a little more? Anyways, this setting can be toggled 
 **little update**: solved the bad randomization by simply applying `.sort()` 10 times instead of just one:
 
 ![gif](./media/READMEmd/progress25.gif)
+
+# update 29
+
+So I finally went back to the "forms" section of the course and, to no get bored with it, i've applied some styling to this project after finding out that even the sliders can be customized. So here is the result:
+
+![gif](./media/READMEmd/progress26.gif)
+
+I'm surprised that I needed `::-webkit-slider-thumb` and `::-moz-range-thumb` for the same thing, I thought all browsers used the same standards.
