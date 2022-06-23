@@ -491,3 +491,19 @@ So I finally went back to the "forms" section of the course and, to no get bored
 ![gif](./media/READMEmd/progress26.gif)
 
 I'm surprised that I needed `::-webkit-slider-thumb` and `::-moz-range-thumb` for the same thing, I thought all browsers used the same standards.
+
+# update 30
+
+The project was finished like a month ago but I came back to make a little fix.
+
+A few weeks ago I discovered that Chrome and Opera won't work with the experimental randomization, only Firefox. I forgot I had this same randomization here, so I came back to fix it.
+
+```javascript
+//this is the code I used
+mixed.sort(() => Math.random() > 0.5);
+//this is the fixed code
+mixed.sort(() => Math.random() > 0.5 ? 1 : -1);
+
+```
+
+For some reason, Firefox only needs a `true` or `false`, but the other ones needs `1` and `-1`. I know this is the correct way to use `.sort()` but as it worked with no problem, I didn't think it could be different between navigators.
