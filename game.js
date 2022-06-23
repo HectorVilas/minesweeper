@@ -66,7 +66,7 @@ arrayBoardNewMethod(){
   let mixed = arrEmpties.concat(arrMines)
   
   for(let i = 0; i < 10; i++){
-    mixed.sort(() => Math.random() > 0.5);
+    mixed.sort(() => Math.random() > 0.5 ? 1 : -1);
   }
 
   let minesPositions = [];
