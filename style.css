@@ -114,23 +114,23 @@ p {
 
 .boom1 {
   transition: ease-in-out 300ms;
-  scale: 200%;
+  transform: scale(200%);
   box-shadow: 0 0 20px darkred;
 }.boom2 {
   transition: ease-in-out 350ms;
-  scale: 40%;
+  transform: scale(40%);
   box-shadow: 0 0 30px white;
 }.boom3 {
   transition: ease-in-out 400ms;
-  scale: 150%;
+  transform: scale(150%);
   box-shadow: 3px 3px 10px black;
 }.boom4 {
   transition: ease-in-out 600ms;
-  scale: 80%;
+  transform: scale(80%);
   box-shadow: 0 0 0px black;
 }.boom5 {
   transition: ease-in-out 800ms;
-  scale: 100%;
+  transform: scale(100%);
   /* box-shadow: 0 0 50px white; */
 }
 .z9 {
@@ -154,17 +154,17 @@ p {
 }
 
 .shrink {
-  scale: 0%;
+  transform: scale(0%);
 }
 .game-start {
   animation: growing 500ms;
 }
 @keyframes growing {
   from {
-    scale: 0%;
+    transform: scale(0%);
   }
   to {
-    scale: 100%;
+    transform: scale(100%);
   }
 }
 .background-boom {
@@ -377,7 +377,7 @@ input[type="range"]::-moz-range-thumb
   appearance: none;
   border-radius: 3px;
   width: 50px;
-  scale: 110%;
+  transform: scale(110%);
   border: 3px outset white;
   background-color: var(--color-page-5);
 }

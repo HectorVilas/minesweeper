@@ -333,23 +333,23 @@ let animations = {
       let boom = board.tileDom(x, y);
       boom.classList.add("boom1");
       boom.addEventListener("transitionend", (e) => {
-        if (e.propertyName == "scale") {
+        if (e.propertyName == "transform") {
           boom.classList.remove("boom1");
           boom.classList.add("boom2");
           boom.addEventListener("transitionend", (e) => {
-            if (e.propertyName == "scale") {
+            if (e.propertyName == "transform") {
               boom.classList.remove("boom2");
               boom.classList.add("boom3");
               boom.addEventListener("transitionend", (e) => {
-                if (e.propertyName == "scale") {
+                if (e.propertyName == "transform") {
                   boom.classList.remove("boom3");
                   boom.classList.add("boom4");
                   boom.addEventListener("transitionend", (e) => {
-                    if (e.propertyName == "scale") {
+                    if (e.propertyName == "transform") {
                       boom.classList.remove("boom4");
                       boom.classList.add("boom5");
                       boom.addEventListener("transitionend", (e) => {
-                        if (e.propertyName == "scale") {
+                        if (e.propertyName == "transform") {
                           boom.classList.remove("boom5");
                         };
                       });
