@@ -507,3 +507,9 @@ mixed.sort(() => Math.random() > 0.5 ? 1 : -1);
 ```
 
 For some reason, Firefox only needs a `true` or `false`, but the other ones needs `1` and `-1`. I know this is the correct way to use `.sort()` but as it worked with no problem, I didn't think it could be different between navigators.
+
+# update 31
+
+Today I've been watching some videos about the `CSS`' `transform` property and just noticed that `scale` is part of it, then I thought about this project, how the shockwave animation only works on Firefox.
+
+This was the problem! I've been using `scale: 150%;`. I changed it to `transform: scale(150%);` and now it works outside Firefox too! I also changed `if (e.propertyName == "scale") {` to `if (e.propertyName == "transform") {` in `JavaScript` to make it work.
